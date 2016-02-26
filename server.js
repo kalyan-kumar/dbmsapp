@@ -1,13 +1,14 @@
 // server.js
 
 // modules =================================================
-var express        = require('express');
-var app            = express();
-var bodyParser     = require('body-parser');
-var methodOverride = require('method-override');
+var express        	= require('express');
+var app            	= express();
+var bodyParser     	= require('body-parser');
+var methodOverride 	= require('method-override');
+var modules 		= require('./app/models/dbSchema.js')
 
 // configuration ===========================================
-    
+/*
 // config files
 var db = require('./config/db');
 
@@ -45,4 +46,4 @@ app.listen(port);
 console.log('Magic happens on port ' + port);
 
 // expose app           
-exports = module.exports = app; 
+exports = module.exports = app; */
