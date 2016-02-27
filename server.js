@@ -2,22 +2,39 @@
 
 // modules =================================================
 var express        	= require('express');
+var mongoose 		= require('mongoose');
+var Schema 			= mongoose.Schema;
 var app            	= express();
 var bodyParser     	= require('body-parser');
 var methodOverride 	= require('method-override');
-var modules 		= require('./app/models/dbSchema.js')
+var modules 		= require('./app/models/dbSchema.js');
+var login			= require('./app/routes/login.js');
+var signup			= require('./app/routes/signup.js');
 
 // configuration ===========================================
+var port = process.env.PORT || 8080; 
+
+mongoose.connect('mongodb://localhost/test');
+
+var db = mongoose.connection;
+ 
+db.on('error', function (err) {
+	console.log('Error connecting to mongo server', err);
+});
+db.once('open', function () {
+	console.log('Connected to mongo server');
+});
+
+app.get('', function(req, res, next){
+	res.send('Hello World');
+});
+
+app.get('/signup', signup.register);
+
 /*
 // config files
 var db = require('./config/db');
 
-// set our port
-var port = process.env.PORT || 8080; 
-
-// connect to our mongoDB database 
-// (uncomment after you enter in your own credentials in config/db.js)
-// mongoose.connect(db.url); 
 
 // get all data/stuff of the body (POST) parameters
 // parse application/json 
@@ -37,13 +54,13 @@ app.use(express.static(__dirname + '/public'));
 
 // routes ==================================================
 require('./app/routes')(app); // configure our routes
+*/
 
-// start app ===============================================
-// startup our app at http://localhost:8080
-app.listen(port);               
-
-// shoutout to the user                     
-console.log('Magic happens on port ' + port);
+var server = app.listen(port, function(){
+	var host = server.address().address
+ 	var port = server.address().port
+  	console.log("DBMS app listening at http://%s:%s", host, port)
+});               
 
 // expose app           
-exports = module.exports = app; */
+exports = module.exports = app;

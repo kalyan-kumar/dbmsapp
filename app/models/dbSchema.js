@@ -1,16 +1,13 @@
-var mongoose = require('mongoose'),
-	Schema = mongoose.Schema;
-
+console.log("Initializing schema");
+// var mongoose 		= require('mongoose');
+// var Schema = mongoose.Schema;
 var studentSchema = new Schema({
-	name: {
-		type: String
-	},
-	roll: {
-
-	},
-	mail: {
-		type: String
-	}
+	firstname: String,
+	lastname: String,
+	roll: String,
+	mail: String,
+	password: String,
+	dob: Date
 });
 studentSchema.methods.addStudent = function(){
 	return this.model('')
@@ -18,16 +15,14 @@ studentSchema.methods.addStudent = function(){
 var Student = mongoose.model('Student', studentSchema);
 
 var courseSchema = new Schema({
-	name: {
-		type: String
-	},
-	cid: {
-		type: Number
-	}
+	name: String,
+	cid: Number,
+	start: Date,
+	end: Date
 });
 var Course = mongoose.model('Course', courseSchema);
 
 module.exports = {
 	Student: Student,
 	Course: Course
-}
+};
