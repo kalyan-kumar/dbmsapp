@@ -1,13 +1,13 @@
 // server.js
 
 // modules =================================================
-var express        	= require('express');
-var mongoose 		= require('mongoose');
-var Schema 			= mongoose.Schema;
-var app            	= express();
-var bodyParser     	= require('body-parser');
-var methodOverride 	= require('method-override');
-var modules 		= require('./app/models/dbSchema.js');
+express        	= require('express');
+mongoose 		= require('mongoose');
+Schema 			= mongoose.Schema;
+app            	= express();
+bodyParser     	= require('body-parser');
+methodOverride 	= require('method-override');
+modules 		= require('./app/models/dbSchema.js');
 var login			= require('./app/routes/login.js');
 var signup			= require('./app/routes/signup.js');
 
@@ -29,7 +29,7 @@ app.get('', function(req, res, next){
 	res.send('Hello World');
 });
 
-app.get('/signup', signup.register);
+app.post('/signup', signup.register);
 
 /*
 // config files

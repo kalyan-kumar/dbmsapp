@@ -1,6 +1,5 @@
 console.log("Initializing schema");
-// var mongoose 		= require('mongoose');
-// var Schema = mongoose.Schema;
+
 var studentSchema = new Schema({
 	firstname: String,
 	lastname: String,
@@ -9,9 +8,6 @@ var studentSchema = new Schema({
 	password: String,
 	dob: Date
 });
-studentSchema.methods.addStudent = function(){
-	return this.model('')
-}
 var Student = mongoose.model('Student', studentSchema);
 
 var courseSchema = new Schema({
