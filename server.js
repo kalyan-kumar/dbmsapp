@@ -4,12 +4,17 @@
 express        	= require('express');
 mongoose 		= require('mongoose');
 Schema 			= mongoose.Schema;
+ObjectId		= Schema.ObjectId;
 app            	= express();
 bodyParser     	= require('body-parser');
 methodOverride 	= require('method-override');
-modules 		= require('./app/models/dbSchema.js');
-var login			= require('./app/routes/login.js');
-var signup			= require('./app/routes/signup.js');
+modules 		= require('./models/dbSchema.js');
+
+// routes ==================================================
+var signup		= require('./routes/signup.js');
+var login		= require('./routes/login.js');
+var indiv		= require('./routes/indiv.js');
+var updcour		= require('./routes/updateCourse.js');
 
 // configuration ===========================================
 var port = process.env.PORT || 8080; 
@@ -25,16 +30,40 @@ db.once('open', function () {
 	console.log('Connected to mongo server');
 });
 
-app.get('', function(req, res, next){
-	res.send('Hello World');
+app.use(express.static("./public"));
+app.use(bodyParser.json());
+
+app.get('/show', function(req, res, next){
+	modules.Student.find({}, function(err, docs){
+		var i;
+		for(i=0;i<docs.length;i++){
+			console.log(docs[i]);
+		}
+	});
+	res.send('Dekhle :P');
+});
+
+app.get('/clear', function(req, res, next){
+	modules.Student.find({}, function(err, docs){
+		var i;
+		for(i=0;i<docs.length;i++){
+			docs[i].remove(function (err) {
+    		});
+		}
+	});
+	res.send('Cleared :D');
 });
 
 app.post('/signup', signup.register);
+app.post('/login', login.checkauth);
+app.post('/stin', login.loadSData);
+app.post('/tein', login.loadTData);
+app.post('/regcour', indiv.regCour);
+app.post('/viewcour', indiv.viewCour);
+app.post('/makecour', indiv.makeCour);
 
 /*
 // config files
-var db = require('./config/db');
-
 
 // get all data/stuff of the body (POST) parameters
 // parse application/json 
@@ -51,9 +80,6 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 
 // set the static files location /public/img will be /img for users
 app.use(express.static(__dirname + '/public')); 
-
-// routes ==================================================
-require('./app/routes')(app); // configure our routes
 */
 
 var server = app.listen(port, function(){
