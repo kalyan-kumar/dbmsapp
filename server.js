@@ -15,10 +15,13 @@ var signup		= require('./routes/signup.js');
 var login		= require('./routes/login.js');
 var indiv		= require('./routes/indiv.js');
 var updcour		= require('./routes/updateCourse.js');
+var roots		= require('./routes/root.js');
 
 // configuration ===========================================
 var port = process.env.PORT || 8080; 
-
+var AES = require("crypto-js/aes");
+//var SHA256 = require("crypto-js/sha256");
+var CryptoJS = require("crypto-js");
 mongoose.connect('mongodb://localhost/test');
 
 var db = mongoose.connection;
@@ -40,6 +43,25 @@ app.get('/show', function(req, res, next){
 			console.log(docs[i]);
 		}
 	});
+	modules.Instructor.find({}, function(err, docs){
+		var i;
+		for(i=0;i<docs.length;i++){
+			console.log(docs[i]);
+		}
+	});
+	modules.Admin.find({}, function(err, docs){
+		var i;
+		for(i=0;i<docs.length;i++){
+			console.log(docs[i]);
+		}
+	});
+	modules.Course.find({}, function(err, docs){
+		var i;
+		for(i=0;i<docs.length;i++){
+			console.log(docs[i]);
+		}
+	});
+	
 	res.send('Dekhle :P');
 });
 
@@ -51,17 +73,106 @@ app.get('/clear', function(req, res, next){
     		});
 		}
 	});
-	res.send('Cleared :D');
+	modules.Instructor.find({}, function(err, docs){
+		var i;
+		for(i=0;i<docs.length;i++){
+			docs[i].remove(function (err) {
+    		});
+		}
+	});
+	modules.Admin.find({}, function(err, docs){
+		var i;
+		for(i=0;i<docs.length;i++){
+			docs[i].remove(function (err) {
+    		});
+		}
+	});
+	modules.Course.find({}, function(err, docs){
+		var i;
+		for(i=0;i<docs.length;i++){
+			docs[i].remove(function (err) {
+    		});
+		}
+	});
+	modules.Submission.find({}, function(err, docs){
+		var i;
+		for(i=0;i<docs.length;i++){
+			docs[i].remove(function (err) {
+    		});
+		}
+	});
+	modules.Assignment.find({}, function(err, docs){
+		var i;
+		for(i=0;i<docs.length;i++){
+			docs[i].remove(function (err) {
+    		});
+		}
+	});
+	
+	res.send('Maar hi diya :D');
+});
+
+app.get('/clearcourse', function(req, res, next){
+	modules.Course.find({}, function(err, docs){
+		var i;
+		for(i=0;i<docs.length;i++){
+			docs[i].remove(function (err) {
+    		});
+		}
+	});
+	res.send('all courses are removed');
+});
+
+app.get('/dummy', function(req, res, next){
+	var instance = new modules.Instructor();
+	var d = new Date();
+	var now = d.getTime();
+	instance.firstname = "GuruDev";
+	instance.lastname = "Babaji";
+	instance.mail = "gurudev@babaji.com";
+	instance.dob = now;
+	instance.password = "whatmightitbe";
+	instance.status = true;
+	instance.save(function(err){
+		if (err) return handleError(err);
+		res.send('Mei tho wo kar diya');
+	});
+});
+
+app.get('/dummyadmin', function(req, res, next){
+	var instance = new modules.Admin();
+	var d = new Date();
+	var now = d.getTime();
+	instance.firstname = "Nitesh";
+	instance.lastname = "Sekhar";
+	instance.mail = "nit@gmail.com";
+	// instance.dob = now;
+	instance.password = "1234";
+	// instance.status = true;
+	instance.save(function(err){
+		if (err) return handleError(err);
+		console.log(instance);
+		res.send('Mei tho wo kar diya');
+	});
 });
 
 app.post('/signup', signup.register);
 app.post('/login', login.checkauth);
 app.post('/stin', login.loadSData);
+app.post('/sstin', login.loadSsData);
 app.post('/tein', login.loadTData);
+app.post('/admin', login.loadAData);
+app.get('/admins', login.approveList);
+app.post('/adaccept', login.acceptit);
+app.post('/adreject', login.rejectit);
+
+app.post('/profile', login.loadData);
 app.post('/regcour', indiv.regCour);
 app.post('/viewcour', indiv.viewCour);
 app.post('/makecour', indiv.makeCour);
-
+app.post('/updcour', updcour.makeChange);
+app.post('/dummyadd', updcour.addCour);
+app.post('/getteachcour', updcour.tagCour);
 /*
 // config files
 

@@ -61,14 +61,14 @@
             <!-- notificatoin dropdown start-->
             <ul class="nav pull-right top-menu">
               <li>
-                <a href="#">
+                <a href="#" ng-click="goHome()">
                   <span class="profile-ava">
                     <img alt="" src="img/home.png" height="30px">
                   </span>
                   <span class="allcourses">Home</span>
                 </a>
               </li>
-              <li>
+              <!-- <li>
                 <a href="courses.html">
                   <span class="profile-ava">
                     <img alt="" src="img/course.png" height="30px">
@@ -76,13 +76,13 @@
                   <span class="allcourses">Courses</span>
                 </a>
               </li>
-              <!-- user login dropdown start-->
+ -->              <!-- user login dropdown start-->
               <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
                                 <img alt="" src="img/student.png" height="30px">
                             </span>
-                            <span class="username">{{name}}</span>
+                            <span class="username">{{teacher.firstname}}</span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
@@ -303,14 +303,16 @@
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-body">
-                        <form class="addcourse">
+                       <form class="addcourse">
                           <p class="title">Are you sure you want to delete?</p>
-                          <input type="radio" value="yes" name="sure" autofocus>Yes
-                          <i class="fa fa-user"></i>
-                          <input type="radio" value="no" name="sure" autofocus>No
-                          <i class="fa fa-user"></i>
+                          <div style="text-align: center;">
+                          <label><input type="radio" value="yes" name="sure" >Yes</label>
+                          <!-- <i class="fa fa-user"></i> -->&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                          <label><input type="radio" value="no" name="sure" >No</label>
+                          <!-- <i class="fa fa-user"></i> -->
+                          </div>
                           <button>
-                            <i class="spinner"></i>
+                            <!-- <i class="spinner"></i> -->
                             <span class="state">Submit</span>
                           </button>
                         </form>
@@ -351,7 +353,7 @@
   <!-- <script src="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script> -->
   <!-- <script src="js/owl.carousel.js" ></script> -->
   <!-- jQuery full calendar -->
-  <!-- <<script src="js/fullcalendar.min.js"></script> <!-- Full Google Calendar - Calendar --> -->
+  <!-- <<script src="js/fullcalendar.min.js"></script> <!-- Full Google Calendar - Calendar --> 
   <!-- <script src="assets/fullcalendar/fullcalendar/fullcalendar.js"></script> -->
   <!--script for this page only-->
   <!-- <script src="js/calendar-custom.js"></script> -->
@@ -380,9 +382,9 @@
       //knob
       //custom select box
 
-      $(function(){
-        $('select.styled').customSelect();
-      });
+      // $(function(){
+      //   $('select.styled').customSelect();
+      // });
 
       var nav = $("#sidebar-menu");
 
