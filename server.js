@@ -9,6 +9,7 @@ app            	= express();
 bodyParser     	= require('body-parser');
 methodOverride 	= require('method-override');
 modules 		= require('./models/dbSchema.js');
+multer			= require('multer');
 
 // routes ==================================================
 var signup		= require('./routes/signup.js');
@@ -16,6 +17,7 @@ var login		= require('./routes/login.js');
 var indiv		= require('./routes/indiv.js');
 var updcour		= require('./routes/updateCourse.js');
 var roots		= require('./routes/root.js');
+var submit		= require('./routes/submit.js');
 
 // configuration ===========================================
 var port = process.env.PORT || 8080; 
@@ -32,6 +34,17 @@ db.on('error', function (err) {
 db.once('open', function () {
 	console.log('Connected to mongo server');
 });
+
+var storage = multer.diskStorage({
+	destination: function(req, file, cb) {
+		cb(null, './uploads')
+	},
+	filename: function(req, file, cb) {
+		var datetimestamp = Date.now();
+		cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1]);
+	}
+});
+var upload = multer({storage: storage}).single('file');
 
 app.use(express.static("./public"));
 app.use(bodyParser.json());
@@ -175,6 +188,8 @@ app.post('/makecour', indiv.makeCour);
 app.post('/updcour', updcour.makeChange);
 app.post('/dummyadd', updcour.addCour);
 app.post('/getteachcour', updcour.tagCour);
+
+app.post('/files', submit.savefile);
 /*
 // config files
 

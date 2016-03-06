@@ -1,4 +1,5 @@
 var app = angular.module('dbmsapp', []);
+
 app.directive('fileModel', ['$parse', function ($parse) {
     return {
      restrict: 'A',
@@ -14,24 +15,23 @@ app.directive('fileModel', ['$parse', function ($parse) {
   }
 };
 }]);
+
 app.service('fileUpload', ['$http', function ($http) {
     this.uploadFileToUrl = function(file, uploadUrl){
-     var fd = new FormData();
-     fd.append('file', file);
-
-               $http.post(uploadUrl, fd, {
-                  transformRequest: angular.identity,
-                  headers: {'Content-Type': undefined}
-               })
-
-               .success(function(){
-                console.log("success");
-               })
-
-               .error(function(){
-               });
-}
+    	var fd = new FormData();
+    	fd.append('file', file);
+        $http
+        .post(uploadUrl, fd, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        })
+        .success(function(){
+            console.log("success");
+        })
+        .error(function(){});
+	}
 }]);
+
 app.controller ('mainController',['$scope', '$http','$window', '$log','$location','fileUpload', function($scope, $http, $window,$log,$location,fileUpload){
 	var studentemail = "";
 	$scope.init = function() {
@@ -55,14 +55,10 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
         $window.location.href = url;
     };
     $scope.uploadFile = function(){
-     var file = $scope.myFile;
-
-     console.log('file is ' );
-     console.dir(file);
-
-     var uploadUrl = "/files";
-     fileUpload.uploadFileToUrl(file, uploadUrl);
- };
-	 
-
+    	var file = $scope.myFile;
+    	console.log('file is ' );
+    	console.dir(file);
+    	var uploadUrl = "/files";
+    	fileUpload.uploadFileToUrl(file, uploadUrl);
+	};
 }]);
