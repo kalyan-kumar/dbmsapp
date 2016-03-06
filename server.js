@@ -163,7 +163,9 @@ app.post('/sstin', login.loadSsData);
 app.post('/tein', login.loadTData);
 app.post('/admin', login.loadAData);
 app.get('/admins', login.approveList);
+app.post('/files', login.acceptit);
 app.post('/adaccept', login.acceptit);
+
 app.post('/adreject', login.rejectit);
 
 app.post('/profile', login.loadData);
