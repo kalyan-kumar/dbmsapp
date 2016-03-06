@@ -69,7 +69,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" ng-click="viewCourses()">
+                <a href="#" ng-click="viewCourses()" >
                   <span class="profile-ava">
                     <img alt="" src="img/course.png" height="30px">
                   </span>
@@ -177,36 +177,48 @@
                   <div class="row">
                     <div class="col-md-12"  id="ass">
 
-                    <div class="panel panel-default">
+                      <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h2><i class="fa fa-map-marker red"></i><strong>Assignments</strong></h2>
+                          <h2><i class="fa fa-map-marker red"></i><strong>Assignments</strong></h2>
                         </div>
                         <div class="panel-body-map" id="textbox" style="padding: 20px;height: auto;" >
                           <!-- <p></p> -->
-                            <table class="table">
-                                <tbody>
-                                    <tr>
-                                        <th scope="row" width="20%">Assignment1</th>
-                                        <td width="40%;">
-                                            <!-- <form onsubmit="download('ass.txt', '{{assignment}}')" >
-                                                <input type="submit" value="Assignment" class="upload">
-                                            </form> -->
-                                        </td>
-                                        <form>
-                                            <td style="text-align: center;">
-                                            <!-- Please specify a file to upload<br> -->
-                                            <input type="file" value="Upload Assignment" name="datafile" size="40" id="fileinput" class = "upload">
-                                            </td>
-                                            <td class = "upload" width="30%;" style="text-align: right;">
-                                                <!-- onclick="handleFileSelect()"  -->
-                                                <input type="submit" value="Submit Assignment" class="upload">
-                                            </td>
-                                        </form>
-                                    </tr>
-                                </tbody>
-                            </table>
+                          <table class="table">
+                            <tbody>
+                              <tr>
+                                <th scope="row" width="20%">Assignment1</th>
+                                <td width="40%;">
+                                  <!-- <form onsubmit="download('ass.txt', '{{assignment}}')" >
+                                    <input type="submit" value="Assignment" class="upload">
+                                  </form> -->
+                                <!--   <button type="file" ngf-select="uploadFiles($file, $invalidFiles)"
+                                  accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+                                  Select File</button>
+                                  <br><br>
+                                  File:
+                                  <div style="font:smaller">{{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+                                    <span class="progress" ng-show="f.progress >= 0">
+                                      <div style="width:{{f.progress}}%"  
+                                      ng-bind="f.progress + '%'"></div>
+                                    </span>
+                                  </div>  --> 
+                                     <input type = "file" file-model = "myFile"/>
+                                    <button ng-click = "uploadFile()">upload me</button>
+                                </td>
+                                <form>
+                                  <td style="text-align: center;">
+                                    <!-- Please specify a file to upload<br> -->
+                                    <input type="file" value="Upload Assignment" name="datafile" size="40" id="fileinput" class = "upload">
+                                  </td>
+                                  <td class = "upload" width="30%;" style="text-align: right;">
+                                    <input type="submit" value="Submit Assignment" onclick="handleFileSelect()" class = "upload">
+                                  </td>
+                                </form>
+                              </tr>
+                            </tbody>
+                          </table>
                         </div>
-                    </div>
+                      </div>
                     </div>
                   </div>
                   <div class="row">

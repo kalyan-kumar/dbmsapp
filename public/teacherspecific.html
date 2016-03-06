@@ -219,26 +219,44 @@
                         </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-md-12"  id="self">
+                  <div class="row">
+                    <div class="col-md-12"  id="self">
 
-                        <div class="panel panel-default">
-                          <div class="panel-heading">
-                            <h2><i class="fa fa-map-marker red"></i><strong>Update Self Assessment Quizes</strong></h2>
-                          </div>
-                          <div class="panel-body-map" id="textbox" style="padding: 20px;height: auto;">
-                            <form class="updateteach" >
-                            <p> <TEXTAREA NAME="HARD" COLS="100" ROWS="5" WRAP="HARD" >{{course.assessments}}</TEXTAREA></p>
-                            <button>
-                              <a href="#">
-                                <!-- <i class="spinner"></i> -->
-                                <span class="state">Update</span></a>
-                              </button>
-                            </form>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h2><i class="fa fa-map-marker red"></i><strong>Add Self Assessment Quizes</strong></h2>
+                        </div>
+                        <div class="panel-body-map" id="textbox" style="padding: 20px;height: auto;">
+                          <form class="updateteach" >
+                            <p><TEXTAREA NAME="HARD" COLS="100" ROWS="1" WRAP="HARD" ng-model="assessment.question" placeholder="Enter Question"></TEXTAREA></p>
+                            <p><TEXTAREA NAME="HARD" ROWS="1" ng-model="assessment.optA" placeholder="Option A"></TEXTAREA>
+                              <TEXTAREA NAME="HARD" ROWS="1" ng-model="assessment.optB" placeholder="Option B"></TEXTAREA>
+                              <TEXTAREA NAME="HARD" ROWS="1" ng-model="assessment.optC" placeholder="Option C"></TEXTAREA>
+                              <TEXTAREA NAME="HARD" ROWS="1" ng-model="assessment.optD" placeholder="Option D"></TEXTAREA>
+                              <input NAME="HARD" type="number" ng-model="assessment.key" placeholder="Enter Correct Option" max="4" min="1">
+                            </p>
+                            <!-- <input type="text" placeholder="Enter Question"></input>
+                            <input type="text" placeholder="Enter Option A"></input>
+                            <input type="text" placeholder="Enter Option B"></input>
+                            <input type="text" placeholder="Enter Option C"></input>
+                            <input type="text" placeholder="Enter Option D"></input> -->
+                           
+                                  <button ng-click="reset(assessment)">
+                                    <a href="#">
+                                      <!-- <i class="spinner"></i> -->
+                                      <span class="state">Next Question</span></a>
+                                    </button>
+                                    <button class="butshift" ng-click="submitassessment(assessment)">
+                                      <a href="#">
+                                        <!-- <i class="spinner"></i> -->
+                                        <span class="state">Submit</span></a>
+                                      </button>
+                                    </td>
+                              </form>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
                     <div class= "row">
                       <div class="col-md-12"  id="syllabus">
 

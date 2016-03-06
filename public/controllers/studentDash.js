@@ -47,7 +47,7 @@ app.controller('testController', ['$scope', '$http', '$window', '$log', '$locati
         });
 	};
 	$scope.viewCourses = function() {
-		var url="/courses.html"+"?email="+$scope.student.mail;
+		var url="/courses.html"+"?email="+$scope.student.mail+"?type~student";
         $window.location.href = url;
 	};
 

@@ -23,9 +23,10 @@ app.controller('CourseList', ['$scope', '$http', '$window', '$log', '$location',
         });
     }
 
-    $scope.goHome = function() {
-        console.log("Going home yipppeee");
-        var url="/studentdash.html"+"?email="+$scope.student.mail;
+   $scope.goHome = function() {
+        console.log(type);
+
+        var url="/"+type+"dash.html"+"?email="+$scope.student.mail;
         $window.location.href = url;
     }
 

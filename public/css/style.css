@@ -237,13 +237,13 @@ table tr th { color: #688a7e;}
     background: #5193ea;
     margin-right: 22px;
     box-shadow: 0 4px #2775e2;
-	float:left;
+    float:left;
 }
 
 .login-social-link a.twitter {
     background: #44ccfe;
     box-shadow: 0 4px #2bb4e8;
-	float:left;
+    float:left;
 }
 /*Modal Content*/
 .modal-content{
@@ -603,10 +603,10 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 }
 
 .dropdown-menu.extended {
-    /*max-width: 300px !important;*/
+    max-width: 300px !important;
     min-width: 160px !important;
     top: 42px;
-    /*width: 235px !important;*/
+    width: 235px !important;
     padding: 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.176) !important;
     border: none !important;
@@ -758,7 +758,7 @@ div[data-role="editor-toolbar"] {
 .dropdown-menu.inbox li a .message {
     display: block !important;
     font-size: 11px;
-	
+    
 }
 
 .top-nav  {
@@ -869,7 +869,7 @@ div[data-role="editor-toolbar"] {
 }
 
 .log-arrow-up {
-    /*background: url("../img/arrow-up.png") no-repeat;*/
+    background: url("../img/arrow-up.png") no-repeat;
     width: 20px;
     height: 11px;
     position: absolute;
@@ -968,7 +968,7 @@ div[data-role="editor-toolbar"] {
   background: #79c447;
   border: 1px solid #61a434;
 }
-/*----------------	color------------------------*/
+/*----------------  color------------------------*/
 .dark-heading-bg {
   background: #4c4f53;
   border: 1px solid #4c4f53;
@@ -1066,7 +1066,7 @@ div[data-role="editor-toolbar"] {
   background: #4875b4;
   background-color : #4875b4;  
 }
-/*----------------------	panel-----------------*/
+/*----------------------    panel-----------------*/
 .panel {
   border:none;
   -webkit-border-radius: 0px;
@@ -1219,9 +1219,9 @@ div[data-role="editor-toolbar"] {
 }
 .panel.panel-primary .panel-heading,
 .panel.panel-primary .panel-footer {
-  background: #5dc3e7;
+  /*background: #5dc3e7;*/
   color: #092f3d;
-  border-color: #20a8d8;
+  /*border-color: #20a8d8;*/
 }
 .panel.panel-success {
   border-color: #79c447;
@@ -1262,111 +1262,111 @@ div[data-role="editor-toolbar"] {
 /* Chat Widget starts */
 
 .chats{
-	list-style-type: none;
-	margin: 0px;
+    list-style-type: none;
+    margin: 0px;
 }
 
 .chats li{
-	margin-bottom: 8px;
-	padding-bottom: 8px;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
 }
 
 .chats .by-me img{
-	margin-top: 5px;
-	margin-right:10px;
-	padding: 1px;
-	background:#fff;
-	border: 1px solid #ccc;
+    margin-top: 5px;
+    margin-right:10px;
+    padding: 1px;
+    background:#fff;
+    border: 1px solid #ccc;
 }
 
 .chats .by-me .chat-meta{
-	font-size: 11px;
-	color: #999;
+    font-size: 11px;
+    color: #999;
 }
 
 .chats .by-me .chat-content{
-	margin-left: 60px;
-	position: relative; 
-	background: #fff; 
-	border: 1px solid #ddd;
-	padding: 7px 10px;
-	border-radius: 5px;
-	font-size: 13px;
+    margin-left: 60px;
+    position: relative; 
+    background: #fff; 
+    border: 1px solid #ddd;
+    padding: 7px 10px;
+    border-radius: 5px;
+    font-size: 13px;
 }
 
 .chats .by-me .chat-content:after, .chats .by-me .chat-content:before { 
-	right: 100%; 
-	border: solid transparent; 
-	content: " "; 
-	height: 0; 
-	width: 0; 
-	position: absolute; 
-	pointer-events: none; 
+    right: 100%; 
+    border: solid transparent; 
+    content: " "; 
+    height: 0; 
+    width: 0; 
+    position: absolute; 
+    pointer-events: none; 
 } 
 
 .chats .by-me .chat-content:after { 
-	border-color: rgba(255, 255, 255, 0); 
-	border-right-color: #fff; 
-	border-width: 10px; 
-	top: 30%; 
-	margin-top: -10px; 
+    border-color: rgba(255, 255, 255, 0); 
+    border-right-color: #fff; 
+    border-width: 10px; 
+    top: 30%; 
+    margin-top: -10px; 
 } 
 
 .chats .by-me .chat-content:before { 
-	border-color: rgba(238, 238, 238, 0); 
-	border-right-color: #ccc; 
-	border-width: 11px; 
-	top: 30%; 
-	margin-top: -11px; 
+    border-color: rgba(238, 238, 238, 0); 
+    border-right-color: #ccc; 
+    border-width: 11px; 
+    top: 30%; 
+    margin-top: -11px; 
 }
 
 .chats .by-other img{
-	margin-top: 5px;
-	margin-left:10px;
-	padding: 1px;
-	background:#fff;
-	border: 1px solid #ccc;
+    margin-top: 5px;
+    margin-left:10px;
+    padding: 1px;
+    background:#fff;
+    border: 1px solid #ccc;
 }
 
 .chats .by-other .chat-meta{
-	font-size: 11px;
-	color: #999;
+    font-size: 11px;
+    color: #999;
 }
 
 .chats .by-other .chat-content{
-	margin-right: 60px;
-	position: relative; 
-	background: #fff; 
-	border: 1px solid #ddd;
-	padding: 7px 10px;
-	border-radius: 5px;
-	font-size: 13px;
+    margin-right: 60px;
+    position: relative; 
+    background: #fff; 
+    border: 1px solid #ddd;
+    padding: 7px 10px;
+    border-radius: 5px;
+    font-size: 13px;
 }
 
 .chats .by-other .chat-content:after, .chats .by-other .chat-content:before { 
-	left: 100%; 
-	border: solid transparent; 
-	content: " "; 
-	height: 0; 
-	width: 0; 
-	position: absolute; 
-	pointer-events: none; 
+    left: 100%; 
+    border: solid transparent; 
+    content: " "; 
+    height: 0; 
+    width: 0; 
+    position: absolute; 
+    pointer-events: none; 
 } 
 
 .chats .by-other .chat-content:after { 
-	border-color: rgba(255, 255, 255, 0); 
-	border-left-color: #fff; 
-	border-width: 10px; 
-	top: 30%; 
-	margin-top: -10px; 
+    border-color: rgba(255, 255, 255, 0); 
+    border-left-color: #fff; 
+    border-width: 10px; 
+    top: 30%; 
+    margin-top: -10px; 
 } 
 
 .chats .by-other .chat-content:before { 
-	border-color: rgba(238, 238, 238, 0); 
-	border-left-color: #ccc; 
-	border-width: 11px; 
-	top: 30%; 
-	margin-top: -11px; 
+    border-color: rgba(238, 238, 238, 0); 
+    border-left-color: #ccc; 
+    border-width: 11px; 
+    top: 30%; 
+    margin-top: -11px; 
 }
 
 /* Chat widget ends */
@@ -1517,36 +1517,36 @@ div[data-role="editor-toolbar"] {
 * /Widget-Content */
 
 .widget-content .error .form-inline button{
-	margin-left:-2px;
-	padding:8px 12px;
+    margin-left:-2px;
+    padding:8px 12px;
 }
 
 .chats{
-	padding-left:0px;
-	margin-left:0px;
+    padding-left:0px;
+    margin-left:0px;
 }
 
 .recent{
-	padding-left:0px;
-	margin-left:0px;
+    padding-left:0px;
+    margin-left:0px;
 }
 
 .widget-foot .form-inline button {
-	margin-left: -3px;
-	padding:7px 12px;
+    margin-left: -3px;
+    padding:7px 12px;
 }
 
 .widget-content .form-inline button {
-	margin-left: 0px;
-	padding:7px 12px;
+    margin-left: 0px;
+    padding:7px 12px;
 }
 
 .buttons button{
-	margin-top:10px;
+    margin-top:10px;
 }
 
 .widget-content ol#slist{
-	padding:0px;
+    padding:0px;
 }
 .widget .widget-head,.modal-header{
   background-color: #f8f8f8;
@@ -1555,15 +1555,15 @@ div[data-role="editor-toolbar"] {
   background: -moz-linear-gradient(top, #f8f8f8, #f2f2f2);
   background: -ms-linear-gradient(top, #f8f8f8, #f2f2f2);
   background: -o-linear-gradient(top, #f8f8f8, #f2f2f2);
-  background: linear-gradient(top, #f8f8f8, #f2f2f2);	
+  background: linear-gradient(top, #f8f8f8, #f2f2f2);   
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
   text-shadow:0px 1px #fff;
   border-bottom: 1px solid #ccc;
   border-top: 1px solid #fff;
-	color: #666;
-	font-size: 14px;
-	font-weight: bold;
+    color: #666;
+    font-size: 14px;
+    font-weight: bold;
     padding: 8px 15px;
 }
 
@@ -1579,25 +1579,25 @@ div[data-role="editor-toolbar"] {
   border-bottom: 1px solid #555;
   border-top: 1px solid #666;
   box-shadow: inset 0px 1px 1px #444;
-	color: #ccc;
+    color: #ccc;
 }
 
 .widget .widget-head .widget-icons i{
-	font-size: 14px;
-	margin: 0px 4px;
+    font-size: 14px;
+    margin: 0px 4px;
 }
 
 .widget .widget-head .widget-icons a{
-	color: #aaa;
+    color: #aaa;
 }
 
 .widget .widget-head .widget-icons a:hover{
-	color: #999;
+    color: #999;
 }
 
 .widget.wblack .widget-head .widget-icons i{
-	font-size: 14px;
-	margin: 0px 4px;
+    font-size: 14px;
+    margin: 0px 4px;
 }
 
 .widget .widget-foot, .modal-footer{
@@ -1607,7 +1607,7 @@ div[data-role="editor-toolbar"] {
   background: -moz-linear-gradient(top, #f8f8f8, #f2f2f2);
   background: -ms-linear-gradient(top, #f8f8f8, #f2f2f2);
   background: -o-linear-gradient(top, #f8f8f8, #f2f2f2);
-  background: linear-gradient(top, #f8f8f8, #f2f2f2);	
+  background: linear-gradient(top, #f8f8f8, #f2f2f2);   
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
   text-shadow:0px 1px #fff;
@@ -1619,54 +1619,54 @@ div[data-role="editor-toolbar"] {
   box-shadow: inset 0px 1px 1px #fff;
 }
 .widget-content .error .form-inline button{
-	margin-left:-2px;
-	padding:8px 12px;
+    margin-left:-2px;
+    padding:8px 12px;
 }
 
 .chats{
-	padding-left:0px;
-	margin-left:0px;
+    padding-left:0px;
+    margin-left:0px;
 }
 
 .recent{
-	padding-left:0px;
-	margin-left:0px;
+    padding-left:0px;
+    margin-left:0px;
 }
 
 .widget-foot .form-inline button {
-	margin-left: -3px;
-	padding:7px 12px;
+    margin-left: -3px;
+    padding:7px 12px;
 }
 
 .widget-content .form-inline button {
-	margin-left: 0px;
-	padding:7px 12px;
+    margin-left: 0px;
+    padding:7px 12px;
 }
 .widget .padd .modal-body{
-	padding: 13px 15px;
+    padding: 13px 15px;
 }
 
 .buttons button{
-	margin-top:10px;
+    margin-top:10px;
 }
 
 .widget-content ol#slist{
-	padding:0px;
+    padding:0px;
 }
 
 .task i {
-	display:inline-block;
-	width: 30px;
-	height: 17px;
-	background: #ccc;
-	text-align: center;
-	border-radius: 50px;
-	font-size: 10px;
-	line-height: 17px;
+    display:inline-block;
+    width: 30px;
+    height: 17px;
+    background: #ccc;
+    text-align: center;
+    border-radius: 50px;
+    font-size: 10px;
+    line-height: 17px;
 }
 
 .pagination li a{
-	color:#777;
+    color:#777;
 }
 /* Widget white extras */
 
@@ -1675,14 +1675,14 @@ div[data-role="editor-toolbar"] {
 }
 
 .widget .nav-tabs {
-	margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 .widget .tab-content{
-	margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 .widget .padd, .modal-body{
-	padding: 13px 15px;
+    padding: 13px 15px;
 }
 .portlets{
   min-height:50px;
@@ -1691,28 +1691,28 @@ div[data-role="editor-toolbar"] {
 .portlets .widget-head{
   cursor:move;
 }
-/*-----	map-----*/
+/*----- map-----*/
 * Google maps */
 
 .gmap iframe{
-	width: 100%;
-	margin: 0px;
-	padding: 0px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
 }
 
 /* Google maps ends */
 /* Today datas */
 
 .today-datas{
-	list-style-type: none;
-	padding: 0px;
-	margin: 10px 0px;
+    list-style-type: none;
+    padding: 0px;
+    margin: 10px 0px;
 }
 
 .today-datas li{
-	display: inline-block;
-	margin-bottom: 5px;
-	margin-right: 10px;
+    display: inline-block;
+    margin-bottom: 5px;
+    margin-right: 10px;
   padding: 10px 10px;
   text-shadow:0px 1px 0px #fff;
   max-width: 100%;
@@ -1720,9 +1720,9 @@ div[data-role="editor-toolbar"] {
 }
 
 .today-datas li .datas-text{
-	font-size: 13px;
-	padding: 7px 0px 0px 0px;
-	font-weight: normal;
+    font-size: 13px;
+    padding: 7px 0px 0px 0px;
+    font-weight: normal;
 }
 
 /*----*/
@@ -2530,9 +2530,9 @@ ul.ft-link li a i {
 .follow-info{
     text-align: left;
     padding-top: 20px;
-	padding-bottom: 10px;
+    padding-bottom: 10px;
 
-	
+    
 }
 .profile-widget h4 {
     margin: 5px;
@@ -2698,23 +2698,23 @@ ul.ft-link li a i {
 .weather-category ul   {
     display: inline-block;
     width: 100%;
-	padding-bottom: 10px;
+    padding-bottom: 10px;
     text-align: center;
-	border-top:1px solid #e6e6e6 ;
-	border-left:1px solid #e6e6e6 ;
+    border-top:1px solid #e6e6e6 ;
+    border-left:1px solid #e6e6e6 ;
     border-right:1px solid #e6e6e6 ;
-	border-bottom:1px solid #e6e6e6 ;
+    border-bottom:1px solid #e6e6e6 ;
     display: inline-block;
 }
 .weather-category ul  li {
     display: inline-block;
     width: 70%;
-	padding-top: 10px;
-	padding-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     text-align: center;
-	
+    
    
-	
+    
     display: inline-block;
 }
 .weather-category ul li i  {
@@ -3874,7 +3874,7 @@ ul.amounts li {
 
 .tab-bg-info {
     background: #324c57; 
-	
+    
     border-bottom: none;
 }
 .tab-bg-info.panel-heading .nav > li.active > a, .tab-bg-info.panel-heading .nav > li > a:hover{
@@ -4042,7 +4042,7 @@ ul.amounts li {
 
 .form-horizontal .checkbox-inline > input {
     margin-top: 1px;
-	border:none;
+    border:none;
 }
 
 
@@ -4067,7 +4067,7 @@ input:focus:invalid:focus, textarea:focus:invalid:focus, select:focus:invalid:fo
 }
 
 .checkbox, .checkbox:hover, .checkbox:focus  {
-	border:none;
+    border:none;
 }
 
 
@@ -5280,6 +5280,36 @@ span.customSelect.changed {
   left: 30px;
   transition: all 0.25s ease-out;
 }
+.updateteach textarea {
+  padding: 5px 5px;
+ /* margin-bottom: 10px;*/
+  border: 1px solid #ddd;
+  transition: border-width 0.2s ease;
+  border-radius: 2px;
+  color: #ccc;
+  overflow-y: scroll;
+  overflow-x: hidden;  
+}
+.updateteach textarea + i.fa {
+  color: #fff;
+  font-size: 1em;
+  position: absolute;
+  margin-top: -47px;
+  opacity: 0;
+  left: 0;
+  transition: all 0.1s ease-in;
+}
+.updateteach textarea:focus {
+  outline: none;
+  color: #444;
+  border-color: #2196F3;
+  border-left-width: 35px;
+}
+.updateteach textarea:focus + i.fa {
+  opacity: 1;
+  left: 30px;
+  transition: all 0.25s ease-out;
+}
 .updateteach a {
   color: #fff;
   text-decoration: none;
@@ -5295,6 +5325,30 @@ span.customSelect.changed {
   border-bottom: 1px solid #eee;
   padding-bottom: 20px;
   text-align: center;
+}
+.updateteach .butshift{
+  /*width: 100%;*/
+  /*height: 100%;*/
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background: #2196F3;
+  color: #fff;
+  display: block;
+  border: none;
+  margin-top: 0px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  position: absolute;
+  left: 200px;
+  bottom: 0;
+  max-height: 60px;
+  border: 0px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 2px 2px;
+  transform: rotateZ(0deg);
+  transition: all 0.1s ease-out;
+  border-bottom-width: 7px;
 }
 .updateteach button {
   /*width: 100%;*/
@@ -5346,13 +5400,32 @@ span.customSelect.changed {
 
 #allcourses{
     margin: auto;
-    width: 90%;
+    width: 80%;
 }
-
 #alert_notificatoin_bar img{
     cursor: pointer;
 }
 
+.upload  {
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+}
+/*
+.upload.ok input {
+  background-color: #8bc34a;
+}
+.enroll.ok button .spinner {
+  border-radius: 0;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  height: 20px;
+  animation: none;
+  transform: rotateZ(-45deg);
+}*/
+
 input[type="number"] {
    width:100px;
+}
+.updateteach input[type="number"] {
+   width:200px;
 }

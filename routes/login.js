@@ -109,7 +109,16 @@ exports.loadSsData = function(req, res, next) {
 	modules.Student.find({'mail':req.body.email}, function(err, docs){
 		if (err) return handleError(err);
 		if (docs.length == 0) {
+			modules.Admin.find({'mail':req.body.email}, function(err, docs){
+		if (err) return handleError(err);
+		if (docs.length == 0) {
 			res.send("No account exists with this email");
+		} else if(docs.length > 1) {
+			console.log("You fucked up while registering users. Seriously Kalyan? -_-");
+		} else {
+			res.json(docs[0]);
+		}
+	});
 		} else if(docs.length > 1) {
 			console.log("You fucked up while registering users. Seriously Kalyan? -_-");
 		} else {

@@ -4,6 +4,7 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
 	
 	var teacher = {};
 	var course = {};
+	var i=0;
 	$scope.init = function() {
 		var url=$location.absUrl().substring($location.absUrl().lastIndexOf('=')+1,$location.absUrl().lastIndexOf('?'));
 		console.log(url);
@@ -16,7 +17,33 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
             $scope.course=response.course;
         });
 	};
-
+	var assessments=[]
+	// $scope.makeempty=function(assignment)
+	// {
+	// 	assignment={};
+	// }
+	$scope.reset = function(assignment) {
+    // $scope.user = angular.copy($scope.master);
+    i=i+1;
+    // console.log("here");
+    $scope.add(assignment);
+    if ($scope.updateteach)
+     $scope.updateteach.$setPristine();
+  };
+	$scope.add=function(assignment)
+	{
+		// console.log(assignment);
+		assessments[i]=assignment;
+		console.log(assessments);
+		// $scope.makeempty(assignment);
+		// $scope.reset();
+			}
+	$scope.submitassessment=function(assessment)
+	{
+		console.log("here");
+		$scope.add(assessment);
+		console.log(assessments);
+	}
 	$scope.goHome = function() {
 		var url="/teacherdash.html"+"?email="+$scope.teacher.mail;
 		$window.location.href = url;
