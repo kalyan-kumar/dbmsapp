@@ -64,6 +64,7 @@ var Question=mongoose.model('Question',questionSchema);
 var assessmentSchema = new Schema({
 	index: Number,
 	questions :[questionSchema]
+	
 });
 var Assessment=mongoose.model("Assessment",assessmentSchema);
 
