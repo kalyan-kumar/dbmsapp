@@ -88,5 +88,6 @@ module.exports = {
 	Admin: Admin,
 	Course: Course,
 	Assignment: Assignment,
-	Submission: Submission
+	Submission: Submission,
+	Assessment:Assessment
 };

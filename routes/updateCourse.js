@@ -81,20 +81,28 @@ exports.addassessment = function (req, res, next)
 		if (err) return handleError(err);
 		if (docs.length == 0) {
 			res.send("no such course found")
-			});
+			}
 			
-		} else {
+		 else {
 			var instance=new modules.Assessment();
-			instance.questions=req.body.questions;
-			instance.index=docs.Assessment.length;
+			instance.questions=req.body.assessment;
+			console.log(instance.questions);
+
+			// instance.index=docs.assessments.length;
 			modules.Course.findOneAndUpdate({'name':req.body.name}, {$push:{"assessments": instance}, function(err, model){
-				if(err) return handleError(err);
-				else console.log(model);
-			});
+				if(err){
+					console.log("why god why?");
+					return handleError(err);
+				} 
+				else {console.log("adding it ");
+				}
+			}
+		});
 		}
 	});
+};
 
-}
+
 
 exports.tagCour = function (req, res, next) {
 	console.log("Tagging Course");

@@ -61,7 +61,7 @@ exports.viewCour = function(req, res, next){
 		res.json(docs);
 	})
 };
-exports.viewCour = function(req, res, next){
+exports.getassessment = function(req, res, next){
 	console.log("Showing all courses");
 	modules.Course.find({'name':req.body.name}, function(err, docs){
 		if (err) return handleError(err);
