@@ -61,7 +61,16 @@ exports.viewCour = function(req, res, next){
 		res.json(docs);
 	})
 };
-
+exports.getassessment = function(req, res, next){
+	console.log("Showing all courses");
+	modules.Course.find({'name':req.body.name}, function(err, docs){
+		if (err) return handleError(err);
+		else{
+			index=req.index;
+		res.json(docs.assessment[index]);
+		}
+	})
+};
 exports.makeCour = function(req, res, next){
 	console.log("Create a course");
 	modules.Course.find({}, function(err, docs){
