@@ -167,6 +167,8 @@ app.post('/files', login.acceptit);
 app.post('/adaccept', login.acceptit);
 
 app.post('/adreject', login.rejectit);
+app.post('/assessment', updcour.addassessment);
+app.post('/getassessment', indiv.getassessment);
 
 app.post('/profile', login.loadData);
 app.post('/regcour', indiv.regCour);

@@ -50,7 +50,21 @@ var assignmentSchema = new Schema({
 	statement: String
 });
 var Assignment = mongoose.model('Assignment', assignmentSchema);
-
+var questionSchema = new Schema({
+	question: String,
+	optionA: String,
+	optionB: String,
+	optionC: String,
+	optionD: String,
+	key: Number 
+});
+var Question=mongoose.model('Question',questionSchema);
+var assessmentSchema = new Schema({
+	index: Number,
+	questions :[questionSchema]
+	
+});
+var Assessment=mongoose.model("Assessment",assessmentSchema);
 var courseSchema = new Schema({
 	name: String,
 	start: Date,
@@ -61,6 +75,7 @@ var courseSchema = new Schema({
 	prereq: String,
 	lectures: [{id:Number, start:Date}],
 	assignments: [assignmentSchema],
+	assessments: [assessmentSchema],
 	fees: Number,
 	Notice: String,
 	enrollist: [{type:ObjectId, ref:'Student'}]
