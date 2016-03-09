@@ -81,7 +81,6 @@ exports.rejectit=function(req,res,next){
 
 };
 exports.loadSData = function(req, res, next) {
-	console.log("Getting the student data1234");
 	modules.Student.find({'mail':req.body.email}, function(err, docs){
 		if (err) return handleError(err);
 		if (docs.length == 0) {
@@ -119,6 +118,7 @@ exports.loadSsData = function(req, res, next) {
 };
 
 exports.courseName = function(req, res, next) {
+	var instance = {};
 	modules.Course.find({'_id':req.body.ID}, function(err, docs){
 		if (err) return handleError(err);
 		if(docs.length == 0) {
@@ -126,7 +126,18 @@ exports.courseName = function(req, res, next) {
 		} else if(docs.length > 1) {
 			console.log("You fucked up while registering users. Seriously Kalyan? -_-");
 		} else {
-			res.send(docs[0].name);
+			instance.name = docs[0].name;
+			modules.Instructor.find({'_id':docs[0].prof}, function(err, them){
+				if (err) return handleError(err);
+				if(them.length == 0)
+					res.send("failed");
+				else if(them.length > 1) {
+					console.log("You fucked up while registering users. Seriously Kalyan? -_-");
+				} else {
+					instance.prof = them[0].firstname + " " + them[0].lastname;
+					res.json(instance);
+				}
+			});
 		}
 	});
 }

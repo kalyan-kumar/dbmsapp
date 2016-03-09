@@ -85,7 +85,7 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
 
 	$scope.updatefees=function(){
 		console.log($scope.course.fees);
-		var query={"name": $scope.course.name, "prereq":$scope.course.fees, "type":4};
+		var query={"name": $scope.course.name, "fees":$scope.course.fees, "type":4};
 		$http.post('/updcour', query).success(function(response){
             console.log(response);	
         });			
