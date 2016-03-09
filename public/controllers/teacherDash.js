@@ -25,7 +25,7 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
 	$scope.addcourse=function(){
 		console.log("nooo");
 		var url="/teacherspecific.html?email="+$scope.teacher.mail+"?cname~"+$scope.coursename;
-		var query = {'devil':$scope.teacher.firstname+" "+$scope.teacher.lastname, 'email':$scope.teacher.mail, 'name':$scope.coursename};
+		var query = {'devil':$scope.teacher._id, 'name':$scope.coursename};
 		$http.post('/dummyadd', query).success(function(response){
             console.log(response);
             if(response.localeCompare("failed")!=0)

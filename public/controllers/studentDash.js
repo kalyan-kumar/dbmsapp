@@ -3,6 +3,7 @@ var app = angular.module('dbmsapp', []);
 app.controller('testController', ['$scope', '$http', '$window', '$log', '$location', function($scope, $http, $window, $log, $location){
 	var url = $location.absUrl();
 	var student = {};
+	$scope.courseNames = [{_id:Number, name:String, prog:String}];
 	var calendar = [{
 		type: String,
 		name: String,
@@ -17,11 +18,17 @@ app.controller('testController', ['$scope', '$http', '$window', '$log', '$locati
 		$http.post('/sstin', query).success(function(response){
             $scope.student = response;
             console.log($scope.student);
-
             var i, j, x, y, instance, d = new Date();
+	    	for(i=0;i<$scope.student.courses.length;i++){
+	    		var query = {ID:$scope.student.courses[i]};
+	    		$http.post('/courname', query).success(function(response){
+	    			$scope.courseNames.push({_id:$scope.student.courses[i], name:response.name, prof:response.prof});
+	    		});
+	    		console.log($scope.courseNames);
+	    	}
 	       	var now = d.getTime();
 	       	x = $scope.student.courses.length;
-	        for(i=0;i<x;i++) {
+	        /*for(i=0;i<x;i++) {
 	        	y = $scope.student.courses[i].lectures.length;
 	        	for(j=0;j<y;j++){
 	        		instance.type = "Lecture";
@@ -43,7 +50,7 @@ app.controller('testController', ['$scope', '$http', '$window', '$log', '$locati
 	        }
 	        calendar.sort(function(a, b){
 	        	return new Date(a.attime) - new Date(b.attime);
-	        });
+	        });*/
         });
 	};
 	$scope.viewCourses = function() {
@@ -63,4 +70,13 @@ app.controller('testController', ['$scope', '$http', '$window', '$log', '$locati
         url="/specificstu.html?email="+$scope.student.mail+"?course~"+name;
         $window.location.href=url;
     };
+    $scope.getCourDet = function(){
+    	var i;
+    	for(i=0;i<$scope.student.courses.length;i++){
+    		var query = {ID:$scope.student.courses[i]};
+    		$http.post('/courname', query).success(function(response){
+    			$scope.courseNames.push({_id:$scope.student.courses[i], name:response.name, prof:response.prof});
+    		});
+    	}
+    }
 }]);

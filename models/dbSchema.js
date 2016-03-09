@@ -6,8 +6,8 @@ var studentSchema = new Schema({
 	mail: String,
 	password: String,
 	dob: Date,
-	courses: [courseSchema],//[{type:ObjectId, ref:'Course'}],
-	submissions: [submissionSchema]
+	courses: [{type:ObjectId, ref:'Course'}],
+	submissions: [{type:ObjectId, ref:'Submission'}]
 });
 var Student = mongoose.model('Student', studentSchema);
 
@@ -18,7 +18,7 @@ var instructorSchema = new Schema({
 	password: {type:String, required:true},
 	dob: {type:Date, required:true},
 	status: Boolean,
-	courses: [courseSchema]
+	courses: [{type:ObjectId, ref:'Course'}]
 });
 var Instructor = mongoose.model('Instructor', instructorSchema);
 
@@ -72,7 +72,7 @@ var courseSchema = new Schema({
 	name: String,
 	start: Date,
 	end: Date,
-	prof: String,
+	prof: {type:ObjectId, ref:'Instructor'},
 	content: String,
 	syl: String,
 	prereq: String,
