@@ -54,6 +54,7 @@ exports.makeChange = function(req, res, next) {
 
 exports.addCour = function (req, res, next) {
 	console.log("Creating a course");
+	console.log(req.body);
 	modules.Course.find({'name':req.body.name}, function(err, docs){
 		if (err) return handleError(err);
 		if (docs.length == 0) {
@@ -61,8 +62,9 @@ exports.addCour = function (req, res, next) {
 			var instance = new modules.Course();
 			instance.name = req.body.name;
 			instance.prof = req.body.ID;
-			// console.log("_____________");
-			// console.log(instance);
+
+			console.log(instance);
+
 			instance.save(function(err){
 				if (err) return handleError(err);
 				modules.Instructor.findOneAndUpdate({'_id':req.body.ID}, {$push:{"courses":instance._id}}, function(err, model){
