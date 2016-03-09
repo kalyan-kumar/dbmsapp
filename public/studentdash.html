@@ -28,6 +28,7 @@
     <!-- owl carousel -->
     <!-- <link rel="stylesheet" href="css/owl.carousel.css" type="text/css"> -->
   <link href="css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+  <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
     <!-- Custom styles -->
   <link rel="stylesheet" href="css/fullcalendar.css">
   <link href="css/widgets.css" rel="stylesheet">
@@ -218,7 +219,7 @@
                                     <td><strong>Course Name</strong></td>
                                     <td><strong>Professor</strong></td>
                                 </tr>
-                                <tr ng-repeat="cour in coursenames">
+                                <tr ng-repeat="cour in courseNames">
                                     <td><a href="#" ng-click="linkit(cour.name)">{{cour.name}}</a></td>
                                     <td>{{cour.prof}}</td>
                                 </tr>

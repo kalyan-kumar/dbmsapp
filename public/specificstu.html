@@ -26,6 +26,7 @@
   <!-- owl carousel -->
   <!-- <link rel="stylesheet" href="css/owl.carousel.css" type="text/css"> -->
   <link href="css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+  <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
   <!-- Custom styles -->
   <link rel="stylesheet" href="css/fullcalendar.css">
   <link href="css/widgets.css" rel="stylesheet">
@@ -88,7 +89,7 @@
                 <ul class="dropdown-menu extended logout">
                   <div class="log-arrow-up"></div>
                   <li class="eborder-top">
-                    <a href="#"><i class="icon_profile"></i>My Profile</a>
+                    <a href="#" ng-click="profile()"><i class="icon_profile"></i>My Profile</a>
                   </li>
                   <li>
                     <a href="index.html"><i class="icon_key_alt"></i>Sign Out</a>
@@ -238,16 +239,16 @@
                   <div id="myModal2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
-                        <div class="modal-body">
-                          <form action="MAILTO:"+{{course.teacher.mail}} method="post" enctype="text/plain" class="addcourse" >
-                            <p class="title">Enter the details</p>
-                            <input type="text" placeholder="name" autofocus/>
+                        <div class="modal-body" >
+                          <form class="addcourse">
+                            <p class="title">Enter the content</p>
+                            <input type="text" placeholder="Subject" ng-model="mail.sub" autofocus/>
                             <i class="fa fa-user"></i>
-                            <input type="email" placeholder="email-id"  autofocus /> 
+                            <!-- <input type="email" placeholder="email-id"  autofocus /> 
+                            <i class="fa fa-user"></i> -->
+                            <input type="text" placeholder="Content" ng-model="mail.cont" autofocus size="50"/>
                             <i class="fa fa-user"></i>
-                            <input type="text" placeholder="Content"  autofocus size="50"/>
-                            <i class="fa fa-user"></i>
-                            <button >
+                            <button ng-click="mailfac()">
                               <i class="spinner"></i>
                               <span class="state">Send</span>
                             </button>

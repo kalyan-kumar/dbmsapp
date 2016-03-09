@@ -7,10 +7,24 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
 	var assessment={};
 	var course = {};
 	var i=0;
+	var encode = function(textString){
+    var words = CryptoJS.enc.Utf8.parse(textString); // WordArray object
+    var base64 = CryptoJS.enc.Base64.stringify(words); // string: 'SGVsbG8gd29ybGQ='
+    console.log(base64);
+    return base64;
+  }
+
+  var decode = function(base64){
+    var words = CryptoJS.enc.Base64.parse(base64);
+    var textString = CryptoJS.enc.Utf8.stringify(words); // 'Hello world'
+    console.log(textString);
+    return textString;
+  }
 	$scope.init = function() {
-		var url=$location.absUrl().substring($location.absUrl().lastIndexOf('=')+1,$location.absUrl().lastIndexOf('?'));
+		var sub = decode($location.absUrl().substr($location.absUrl().lastIndexOf('?')+1));
+		var url=sub.substring(sub.lastIndexOf('=')+1,sub.lastIndexOf('?'));
 		console.log(url);
-		var courses=$location.absUrl().substr($location.absUrl().lastIndexOf('~')+1);
+		var courses=sub.substr(sub.lastIndexOf('~')+1);
 		var query={'email':url, 'name':courses};
 		console.log(query);
 		$http.post('/getteachcour', query).success(function(response){
@@ -20,19 +34,15 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
         });
 	};
 	var assessments=[]
-	// $scope.makeempty=function(assignment)
-	// {
-	// 	assignment={};
-	// }
-	$scope.reset = function(assignment) {
+	$scope.reset = function(quiz) {
     // $scope.user = angular.copy($scope.master);
-    i=i+1;
-    // console.log("here");
-    $scope.add(assignment);
-    if ($scope.updateteach)
-     $scope.updateteach.$setPristine();
+    var ass={}
+    ass = quiz;
+    $scope.add(ass);
+    console.log("here");
+    console.log(i);
   };
-	$scope.add=function(assignment)
+	$scope.add=function(ass)
 	{
 		// console.log(assignment);
 		assessment.question=assignment;
@@ -40,9 +50,9 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
 		assessment={};
 		$scope.assessment={};
 		console.log(assessments);
-		// $scope.makeempty(assignment);
-		// $scope.reset();
-			}
+		$scope.assessment = {};
+	};
+
 	$scope.submitassessment=function(assessment)
 	{
 		console.log("here");
@@ -55,10 +65,15 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
 		});
 	};
 	$scope.goHome = function() {
-		var url="/teacherdash.html"+"?email="+$scope.teacher.mail;
+		var base64 = encode("email="+$scope.teacher.mail);
+		var url="/teacherdash.html?"+base64;
 		$window.location.href = url;
 	};
-
+	$scope.profile=function(){
+		var base64 = encode("email="+$scope.teacher.mail+"?type~teacher");
+		var url="/profile.html?"+base64;
+        $window.location.href = url;
+	}
 	$scope.updatecontent=function(){
 		console.log($scope.course.content);
 		var query={"name": $scope.course.name, "content":$scope.course.content, "type":1};
@@ -85,7 +100,7 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
 
 	$scope.updatefees=function(){
 		console.log($scope.course.fees);
-		var query={"name": $scope.course.name, "prereq":$scope.course.fees, "type":4};
+		var query={"name": $scope.course.name, "fees":$scope.course.fees, "type":4};
 		$http.post('/updcour', query).success(function(response){
             console.log(response);	
         });			

@@ -3,7 +3,7 @@ var app = angular.module('dbmsapp', []);
 app.controller('testController', ['$scope', '$http', '$window', '$log', '$location', function($scope, $http, $window, $log, $location){
 	var url = $location.absUrl();
 	var student = {};
-	$scope.courseNames = [{_id:Number, name:String, prog:String}];
+	$scope.courseNames = [];
 	var calendar = [{
 		type: String,
 		name: String,
@@ -11,10 +11,24 @@ app.controller('testController', ['$scope', '$http', '$window', '$log', '$locati
 		attime: Date,
 		status: Boolean
 	}];
+	var encode = function(textString){
+		console.log(textString);
+	    var words = CryptoJS.enc.Utf8.parse(textString); // WordArray object
+	    var base64 = CryptoJS.enc.Base64.stringify(words); // string: 'SGVsbG8gd29ybGQ='
+	    console.log(base64);
+	    return base64;
+	}
+
+	var decode = function(base64){
+		var words = CryptoJS.enc.Base64.parse(base64);
+	    var textString = CryptoJS.enc.Utf8.stringify(words); // 'Hello world'
+	    console.log(textString);
+	    return textString;
+	}
 	$scope.init = function() {
-		var url = $location.absUrl();
-		var query = {'email':url.substr(url.lastIndexOf('=')+1)};
-		console.log(query);
+		var url = $location.absUrl().substr($location.absUrl().lastIndexOf('?')+1);
+		var aftdec = decode(url);
+		var query = {'email':aftdec.substr(aftdec.lastIndexOf('=')+1)};
 		$http.post('/sstin', query).success(function(response){
             $scope.student = response;
             console.log($scope.student);
@@ -24,7 +38,6 @@ app.controller('testController', ['$scope', '$http', '$window', '$log', '$locati
 	    		$http.post('/courname', query).success(function(response){
 	    			$scope.courseNames.push({_id:$scope.student.courses[i], name:response.name, prof:response.prof});
 	    		});
-	    		console.log($scope.courseNames);
 	    	}
 	       	var now = d.getTime();
 	       	x = $scope.student.courses.length;
@@ -54,29 +67,24 @@ app.controller('testController', ['$scope', '$http', '$window', '$log', '$locati
         });
 	};
 	$scope.viewCourses = function() {
-		var url="/courses.html"+"?email="+$scope.student.mail+"?type~student";
-        $window.location.href = url;
+		var base64 = encode("email="+$scope.student.mail+"?type~student");
+		var url="/courses.html?"+base64;
+		$window.location.href = url;
 	};
 
 	$scope.goHome = function() {
-		var url="/studentdash.html"+"?email="+$scope.student.mail;
+		var base64 = encode("email="+$scope.student.mail);
+		var url="/studentdash.html?"+base64;
 		$window.location.href = url;
 	};
 	$scope.profile=function(){
-		var url="/profile.html"+"?email="+$scope.student.mail+"?type~student";
-        $window.location.href = url;
+		var base64 = encode("email="+$scope.student.mail+"?type~student");
+		var url="/profile.html?"+base64;
+		$window.location.href = url;
 	}
 	$scope.linkit=function(name){
-        url="/specificstu.html?email="+$scope.student.mail+"?course~"+name;
-        $window.location.href=url;
-    };
-    $scope.getCourDet = function(){
-    	var i;
-    	for(i=0;i<$scope.student.courses.length;i++){
-    		var query = {ID:$scope.student.courses[i]};
-    		$http.post('/courname', query).success(function(response){
-    			$scope.courseNames.push({_id:$scope.student.courses[i], name:response.name, prof:response.prof});
-    		});
-    	}
-    }
+		var base64 = encode("email="+$scope.student.mail+"?course~"+name);
+		url="/specificstu.html?"+base64;
+		$window.location.href=url;
+	};
 }]);

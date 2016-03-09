@@ -14,7 +14,7 @@ exports.makeChange = function(req, res, next) {
 			});
 			break;
 		case 2:
-			modules.Course.findOneAndUpdate({'name':req.body.name}, {'content': req.body.content}, function(err, docs){
+			modules.Course.findOneAndUpdate({'syl':req.body.name}, {'content': req.body.syllabus}, function(err, docs){
 				if (err) return handleError(err);
 				if (docs.length == 0) {
 					res.send("No course exists with this name");
@@ -26,7 +26,7 @@ exports.makeChange = function(req, res, next) {
 			});
 			break;
 		case 3:
-			modules.Course.findOneAndUpdate({'name':req.body.name}, {'content': req.body.content}, function(err, docs){
+			modules.Course.findOneAndUpdate({'prereq':req.body.name}, {'content': req.body.prereq}, function(err, docs){
 				if (err) return handleError(err);
 				if (docs.length == 0) {
 					res.send("No course exists with this name");
@@ -38,7 +38,7 @@ exports.makeChange = function(req, res, next) {
 			});
 			break;
 		case 4:
-			modules.Course.findOneAndUpdate({'name':req.body.name}, {'content': req.body.content}, function(err, docs){
+			modules.Course.findOneAndUpdate({'fees':req.body.name}, {'content': req.body.fees}, function(err, docs){
 				if (err) return handleError(err);
 				if (docs.length == 0) {
 					res.send("No course exists with this name");
