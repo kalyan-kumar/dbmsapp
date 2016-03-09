@@ -6,10 +6,28 @@ app.controller('CourseList', ['$scope', '$http', '$window', '$log', '$location',
     var studente = "";
     var currcourse = "";
     var type="";
+
+    var encode = function(textString){
+        var words = CryptoJS.enc.Utf8.parse(textString); // WordArray object
+        var base64 = CryptoJS.enc.Base64.stringify(words); // string: 'SGVsbG8gd29ybGQ='
+        console.log(base64);
+        return base64;
+    }
+
+    var decode = function(base64){
+        var words = CryptoJS.enc.Base64.parse(base64);
+        var textString = CryptoJS.enc.Utf8.stringify(words); // 'Hello world'
+        console.log(textString);
+        return textString;
+    }
+
     $scope.init = function() {
         var url = $location.absUrl();
-        var query = {'email':url.substring(url.lastIndexOf('=')+1, url.lastIndexOf('?'))};
-        type=$location.absUrl().substr($location.absUrl().lastIndexOf('~')+1);
+        console.log("HERE");
+        var sub = url.substr(url.lastIndexOf('?')+1);
+        var textString = decode(sub);
+        var query = {'email':textString.substring(textString.lastIndexOf('=')+1, textString.lastIndexOf('?'))};
+        type=textString.substr(textString.lastIndexOf('~')+1);
 
         console.log(query);
         $http.post('/sstin', query).success(function(response){
@@ -25,11 +43,15 @@ app.controller('CourseList', ['$scope', '$http', '$window', '$log', '$location',
 
    $scope.goHome = function() {
         console.log(type);
-
-        var url="/"+type+"dash.html"+"?email="+$scope.student.mail;
+        var base64=encode("email="+$scope.student.mail);
+        var url="/"+type+"dash.html?"+base64;
         $window.location.href = url;
     }
-
+    $scope.profile=function(){
+    var base64 = encode("email="+$scope.student.mail+"?type~"+type);
+    var url="/profile.html?"+base64;
+    $window.location.href = url;
+    }
     $scope.SelectCourse = function(name) {
         currcourse = name;
         console.log(currcourse);
@@ -44,7 +66,8 @@ app.controller('CourseList', ['$scope', '$http', '$window', '$log', '$location',
         var query = {'cname':currcourse, 'mail':studente};
         $http.post('/regcour', query).success(function(response){
             console.log(response);
-            var url="/specificstu.html?email="+$scope.student.mail+"?course~"+currcourse;
+            var base64 = encode("email="+$scope.student.mail+"?course~"+currcourse);
+            var url="/specificstu.html?"+base64;
             $window.location.href=url;
         });
     }

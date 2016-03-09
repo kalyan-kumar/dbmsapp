@@ -3,10 +3,25 @@ var app = angular.module('dbmsapp', []);
 app.controller ('mainController',['$scope', '$http','$window', '$log','$location', function($scope, $http, $window,$log,$location){
 	
 	var teacher={};
+	var encode = function(textString){
+    var words = CryptoJS.enc.Utf8.parse(textString); // WordArray object
+    var base64 = CryptoJS.enc.Base64.stringify(words); // string: 'SGVsbG8gd29ybGQ='
+    console.log(base64);
+    return base64;
+  }
+
+  var decode = function(base64){
+    var words = CryptoJS.enc.Base64.parse(base64);
+    var textString = CryptoJS.enc.Utf8.stringify(words); // 'Hello world'
+    console.log(textString);
+    return textString;
+  }
 	$scope.init = function() {
-		var url=$location.absUrl().substr($location.absUrl().lastIndexOf('=')+1);
+		var sub = $location.absUrl().substr($location.absUrl().lastIndexOf('?')+1);
+		var textString = decode(sub);
+		var url=textString.substr(textString.lastIndexOf('=')+1);
 		var query={'email':url};
-		console.log($location.absUrl().substr($location.absUrl().lastIndexOf('=')+1));
+		console.log(textString.substr(textString.lastIndexOf('=')+1));
 		$http.post('/tein', query).success(function(response){
             console.log(response);
             $scope.teacher=response;
@@ -14,17 +29,20 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
 	}
 
 	$scope.goforit=function(){
-		var url="/courses.html?email="+$scope.teacher.mail;
+		var base64 = encode("email="+$scope.teacher.mail);
+		var url="/courses.html?"+base64;
 		$window.location.href=url;
 	};
 	$scope.profile=function(){
-		var url="/profile.html"+"?email="+$scope.teacher.mail+"?type~teacher";
+		var base64 = encode("email="+$scope.teacher.mail+"?type~teacher");
+		var url="/profile.html?"+base64;
         $window.location.href = url;
 	}
 
 	$scope.addcourse=function(){
 		console.log("nooo");
-		var url="/teacherspecific.html?email="+$scope.teacher.mail+"?cname~"+$scope.coursename;
+		var base64 = encode("email="+$scope.teacher.mail+"?cname~"+$scope.coursename);
+		var url="/teacherspecific.html?"+ base64;
 		var query = {'devil':$scope.teacher.firstname+" "+$scope.teacher.lastname, 'email':$scope.teacher.mail, 'name':$scope.coursename};
 		$http.post('/dummyadd', query).success(function(response){
             console.log(response);
@@ -34,12 +52,14 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
 	};
 	
 	$scope.goHome = function() {
-		var url="/teacherdash.html"+"?email="+$scope.teacher.mail;
+		var base64 = encode("email="+$scope.teacher.mail);
+		var url="/teacherdash.html?"+base64;
 		$window.location.href = url;
 	};
 
 	$scope.linkit=function(name){
-		url="/teacherspecific.html?email="+$scope.teacher.mail+"?course~"+name;
+		var base64 = encode("email="+$scope.teacher.mail+"?course~"+name);
+		url="/teacherspecific.html?"+ base64;
 		$window.location.href=url;
 	};
 
