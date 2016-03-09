@@ -62,7 +62,8 @@ exports.addCour = function (req, res, next) {
 			instance.prof = req.body.devil;
 			instance.save(function(err){
 				if (err) return handleError(err);
-				modules.Instructor.findOneAndUpdate({'mail':req.body.email}, {$push:{"courses":instance}}, function(err, model){
+				modules.Instructor.findOneAndUpdate({'_id':req.body.devil}, {$push:{"courses":instance._id}}, function(err, model){
+					console.log(instance._id);
 					console.log("Updated");
 					console.log(model);
 				});

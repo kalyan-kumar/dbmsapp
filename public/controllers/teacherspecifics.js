@@ -1,8 +1,10 @@
 var app = angular.module('dbmsapp', []);
 
 app.controller ('mainController',['$scope', '$http','$window', '$log','$location', function($scope, $http, $window,$log,$location){
-	
+	// var deasync = require("deasync");
+
 	var teacher = {};
+	var assessment={};
 	var course = {};
 	var i=0;
 	$scope.init = function() {
@@ -33,7 +35,10 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
 	$scope.add=function(assignment)
 	{
 		// console.log(assignment);
-		assessments[i]=assignment;
+		assessment.question=assignment;
+		assessments.push(assessment);
+		assessment={};
+		$scope.assessment={};
 		console.log(assessments);
 		// $scope.makeempty(assignment);
 		// $scope.reset();
@@ -41,9 +46,14 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
 	$scope.submitassessment=function(assessment)
 	{
 		console.log("here");
-		$scope.add(assessment);
+		$scope.reset(assessment);
 		console.log(assessments);
-	}
+		var query ={"assessment": assessments, "name": $scope.course.name};
+		console.log(query);
+		$http.post('/assessment',query).success(function(response){
+			console.log(response);
+		});
+	};
 	$scope.goHome = function() {
 		var url="/teacherdash.html"+"?email="+$scope.teacher.mail;
 		$window.location.href = url;

@@ -9,11 +9,26 @@ exports.regCour = function(req, res, next){
 			console.log("You fucked up again. Seriously Kalyan? -_-");
 		} else {
 			console.log(docs[0]);
-			modules.Student.findOneAndUpdate({'mail':req.body.mail}, {$push:{"courses": docs[0]}}, function(err, model){
+			modules.Student.findOneAndUpdate({'mail':req.body.mail}, {$push:{"courses": docs[0]._id}}, function(err, model){
 				if(err) return handleError(err);
 				else console.log(model);
 			});
 			console.log("Yeah");
+			modules.Student.find({'mail':req.body.mail}, function(err, them){
+				if (err) return handleError(err);
+				if (docs.length == 0) {
+					res.send("No account exists with this email");
+				} else if(docs.length > 1) {
+					console.log("You fucked up again. Seriously Kalyan? -_-");
+				} else {
+					console.log(docs[0]);
+					modules.Course.findOneAndUpdate({'name':req.body.cname}, {$push:{"enrollist": them[0]._id}}, function(err, model){
+						if(err) return handleError(err);
+						else console.log(model);
+					});
+					console.log("Yeah");
+				}	
+			});
 			res.send("Success");
 		}	
 	});
