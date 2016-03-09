@@ -39,6 +39,7 @@ app.controller('testController', ['$scope', '$http', '$window', '$log', '$locati
 	    			$scope.courseNames.push({_id:$scope.student.courses[i], name:response.name, prof:response.prof});
 	    		});
 	    	}
+	    	console.log($scope.courseNames);
 	       	var now = d.getTime();
 	       	x = $scope.student.courses.length;
 	        /*for(i=0;i<x;i++) {
