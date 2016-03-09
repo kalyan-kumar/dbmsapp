@@ -107,25 +107,30 @@ exports.loadSData = function(req, res, next) {
 exports.loadSsData = function(req, res, next) {
 	console.log("Getting the student data1234");
 	modules.Student.find({'mail':req.body.email}, function(err, docs){
-		if (err) return handleError(err);
-		if (docs.length == 0) {
-			modules.Admin.find({'mail':req.body.email}, function(err, docs){
-		if (err) return handleError(err);
-		if (docs.length == 0) {
-			res.send("No account exists with this email");
-		} else if(docs.length > 1) {
-			console.log("You fucked up while registering users. Seriously Kalyan? -_-");
-		} else {
-			res.json(docs[0]);
-		}
-	});
-		} else if(docs.length > 1) {
-			console.log("You fucked up while registering users. Seriously Kalyan? -_-");
-		} else {
-			res.json(docs[0]);
-		}
-	});
+			if (err) return handleError(err);
+			if (docs.length == 0) {
+				res.send("failed");
+			} else if(docs.length > 1) {
+				console.log("You fucked up while registering users. Seriously Kalyan? -_-");
+			} else {
+				res.json(docs[0]);
+			}
+		});
 };
+
+exports.courseName = function(req, res, next) {
+	modules.Course.find({'_id':req.body.ID}, function(err, docs){
+		if (err) return handleError(err);
+		if(docs.length == 0) {
+			res.send("failed");
+		} else if(docs.length > 1) {
+			console.log("You fucked up while registering users. Seriously Kalyan? -_-");
+		} else {
+			res.send(docs[0].name);
+		}
+	});
+}
+
 exports.loadAData = function(req, res, next) {
 	console.log("Getting the student data1234");
 	modules.Admin.find({'mail':req.body.email}, function(err, docs){
@@ -172,15 +177,17 @@ exports.loadData = function(req, res, next) {
 };
 
 exports.loadTData = function(req, res, next) {
-	console.log("hehhhe");
-	modules.Instructor.find({'mail':req.body.email}, function(err, docs){
-		if (err) return handleError(err);
-		if (docs.length == 0) {
-			res.send("No account exists with this email");
-		} else if(docs.length > 1) {
-			console.log("You fucked up while registering users. Seriously Kalyan? -_-");
-		} else {
-			res.json(docs[0]);
-		}
+	modules.Instructor
+		.find({'mail':req.body.email})
+		.populate('courses')
+		.exec(function(err, docs){
+			if (err) return handleError(err);
+			if (docs.length == 0) {
+				res.send("No account exists with this email");
+			} else if(docs.length > 1) {
+				console.log("You fucked up while registering users. Seriously Kalyan? -_-");
+			} else {
+				res.json(docs[0]);
+			}
 	});
 };

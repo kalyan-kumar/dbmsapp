@@ -213,13 +213,13 @@
                         <h2><i class="fa fa-map-marker red"></i><strong>My Courses</strong></h2>
                     </div>
                     <div class="panel-body-map">
-                        <table class="table table-hover personal-task">
+                        <table class="table table-hover personal-task" >
                             <tbody>
                                 <tr>
                                     <td><strong>Course Name</strong></td>
                                     <td><strong>Professor</strong></td>
                                 </tr>
-                                <tr ng-repeat="cour in student.courses">
+                                <tr ng-repeat="cour in coursenames">
                                     <td><a href="#" ng-click="linkit(cour.name)">{{cour.name}}</a></td>
                                     <td>{{cour.prof}}</td>
                                 </tr>

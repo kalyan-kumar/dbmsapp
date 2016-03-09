@@ -62,7 +62,8 @@ exports.addCour = function (req, res, next) {
 			instance.prof = req.body.devil;
 			instance.save(function(err){
 				if (err) return handleError(err);
-				modules.Instructor.findOneAndUpdate({'mail':req.body.email}, {$push:{"courses":instance}}, function(err, model){
+				modules.Instructor.findOneAndUpdate({'_id':req.body.devil}, {$push:{"courses":instance._id}}, function(err, model){
+					console.log(instance._id);
 					console.log("Updated");
 					console.log(model);
 				});
@@ -73,6 +74,36 @@ exports.addCour = function (req, res, next) {
 		}
 	});
 };
+
+exports.addassessment = function (req, res, next)
+{
+	console.log("Adding Assessment");
+	modules.Course.find({'name':req.body.name}, function(err, docs){
+		if (err) return handleError(err);
+		if (docs.length == 0) {
+			res.send("no such course found")
+			}
+			
+		 else {
+			var instance=new modules.Assessment();
+			instance.questions=req.body.assessment;
+			console.log(instance.questions);
+
+			// instance.index=docs.assessments.length;
+			modules.Course.findOneAndUpdate({'name':req.body.name}, {$push:{"assessments": instance}, function(err, model){
+				if(err){
+					console.log("why god why?");
+					return handleError(err);
+				} 
+				else {console.log("adding it ");
+				}
+			}
+		});
+		}
+	});
+};
+
+
 
 exports.tagCour = function (req, res, next) {
 	console.log("Tagging Course");

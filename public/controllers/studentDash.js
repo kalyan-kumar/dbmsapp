@@ -3,6 +3,7 @@ var app = angular.module('dbmsapp', []);
 app.controller('testController', ['$scope', '$http', '$window', '$log', '$location', function($scope, $http, $window, $log, $location){
 	var url = $location.absUrl();
 	var student = {};
+	$scope.courseNames = [{_id:Number, name:String, prog:String}];
 	var calendar = [{
 		type: String,
 		name: String,

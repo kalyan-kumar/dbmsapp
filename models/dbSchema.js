@@ -6,8 +6,8 @@ var studentSchema = new Schema({
 	mail: String,
 	password: String,
 	dob: Date,
-	courses: [courseSchema],//[{type:ObjectId, ref:'Course'}],
-	submissions: [submissionSchema]
+	courses: [{type:ObjectId, ref:'Course'}],
+	submissions: [{type:ObjectId, ref:'Submission'}]
 });
 var Student = mongoose.model('Student', studentSchema);
 
@@ -18,7 +18,7 @@ var instructorSchema = new Schema({
 	password: {type:String, required:true},
 	dob: {type:Date, required:true},
 	status: Boolean,
-	courses: [courseSchema]
+	courses: [{type:ObjectId, ref:'Course'}]
 });
 var Instructor = mongoose.model('Instructor', instructorSchema);
 
@@ -51,16 +51,34 @@ var assignmentSchema = new Schema({
 });
 var Assignment = mongoose.model('Assignment', assignmentSchema);
 
+var questionSchema = new Schema({
+	question: String,
+	optionA: String,
+	optionB: String,
+	optionC: String,
+	optionD: String,
+	key: Number 
+});
+var Question=mongoose.model('Question',questionSchema);
+
+var assessmentSchema = new Schema({
+	index: Number,
+	questions :[questionSchema]
+	
+});
+var Assessment=mongoose.model("Assessment",assessmentSchema);
+
 var courseSchema = new Schema({
 	name: String,
 	start: Date,
 	end: Date,
-	prof: String,
+	prof: {type:ObjectId, ref:'Instructor'},
 	content: String,
 	syl: String,
 	prereq: String,
 	lectures: [{id:Number, start:Date}],
 	assignments: [assignmentSchema],
+	assessments: [assessmentSchema],
 	fees: Number,
 	Notice: String,
 	enrollist: [{type:ObjectId, ref:'Student'}]
@@ -73,5 +91,7 @@ module.exports = {
 	Admin: Admin,
 	Course: Course,
 	Assignment: Assignment,
-	Submission: Submission
+	Question: Question,
+	Submission: Submission,
+	Assessment:Assessment
 };
