@@ -12,24 +12,30 @@ app.controller('AdminCt', ['$scope', '$http', '$log','$window','$location' ,func
 	    	console.log(response);
 	    	console.log("here");
 	    });
-	    // notif1 = {firstname : "Riya Bubna", email : "awd1@gmail.com"}
-   		// notif2 = {firstname : "Riya is ugly", email : "awd2@gmail.com"}
-   		// notif3 = {firstname : "Riya is fat", email : "awd3@gmail.com"}
-   		// notiflist=[notif1,notif2,notif3];
-   		// $scope.notiflist = notiflist;
-	    // noNotifs = $scope.notiflist.length;
-			
-   		 // 
-   		 
+	}
 
+	var encode = function(textString){
+		var words = CryptoJS.enc.Utf8.parse(textString); // WordArray object
+		var base64 = CryptoJS.enc.Base64.stringify(words); // string: 'SGVsbG8gd29ybGQ='
+		console.log(base64);
+		return base64;
+	}
+
+	var decode = function(base64){
+		var words = CryptoJS.enc.Base64.parse(base64);
+		var textString = CryptoJS.enc.Utf8.stringify(words); // 'Hello world'
+		console.log(textString);
+		return textString;
 	}
 
 	// refresh();
 	$scope.init=function(){
 		var url = $location.absUrl();
-		
-		var query = {'email':url.substr(url.lastIndexOf('=')+1)};
-		console.log(query);
+		console.log("HERE");
+		var sub = url.substr(url.lastIndexOf('?')+1);
+		var textString = decode(sub);
+		var query = {'email':textString.substr(textString.lastIndexOf('=')+1)};
+		// var query = {'email':url.substr(url.lastIndexOf('=')+1)};
 		$http.post('/admin', query).success(function(response){
             console.log(response);
             $scope.admin=response;
@@ -37,12 +43,15 @@ app.controller('AdminCt', ['$scope', '$http', '$log','$window','$location' ,func
 		refresh();
 	}
 	$scope.profile=function(){
-		var url="/profile.html"+"?email="+$scope.admin.mail+"?type~admin";
+		var base64=encode("?email="+$scope.admin.mail+"?type~admin");
+		var url="/profile.html?"+base64;
+		console.log(url);
         $window.location.href = url;
 	}
 	$scope.goHome = function() {
         console.log("Going home yipppeee");
-        var url="/admindash.html"+"?email="+$scope.admin.mail;
+        var base64=encode("?email="+$scope.admin.mail);
+        var url="/admindash.html?"+base64;
         $window.location.href = url;
     }
 	$scope.accept=function(email) {

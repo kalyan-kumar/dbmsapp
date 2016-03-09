@@ -51,21 +51,39 @@ app.controller('testController', ['$scope', '$http', '$window', '$log', '$locati
 	        });*/
         });
 	};
+	var encode = function(textString){
+		console.log(textString);
+	    var words = CryptoJS.enc.Utf8.parse(textString); // WordArray object
+	    var base64 = CryptoJS.enc.Base64.stringify(words); // string: 'SGVsbG8gd29ybGQ='
+	    console.log(base64);
+	    return base64;
+	}
+
+	var decode = function(base64){
+		var words = CryptoJS.enc.Base64.parse(base64);
+    var textString = CryptoJS.enc.Utf8.stringify(words); // 'Hello world'
+    console.log(textString);
+    return textString;
+	}
 	$scope.viewCourses = function() {
-		var url="/courses.html"+"?email="+$scope.student.mail+"?type~student";
-        $window.location.href = url;
+		var base64 = encode("email="+$scope.student.mail+"?type~student");
+		var url="/courses.html?"+base64;
+		$window.location.href = url;
 	};
 
 	$scope.goHome = function() {
-		var url="/studentdash.html"+"?email="+$scope.student.mail;
+		var base64 = encode("email="+$scope.student.mail);
+		var url="/studentdash.html?"+base64;
 		$window.location.href = url;
 	};
 	$scope.profile=function(){
-		var url="/profile.html"+"?email="+$scope.student.mail+"?type~student";
-        $window.location.href = url;
+		var base64 = encode("email="+$scope.student.mail+"?type~student");
+		var url="/profile.html?"+base64;
+		$window.location.href = url;
 	}
 	$scope.linkit=function(name){
-        url="/specificstu.html?email="+$scope.student.mail+"?course~"+name;
-        $window.location.href=url;
-    };
+		var base64 = encode("email="+$scope.student.mail+"?course~"+name);
+		url="/specificstu.html?"+base64;
+		$window.location.href=url;
+	};
 }]);
