@@ -11,9 +11,24 @@ app.controller('testController', ['$scope', '$http', '$window', '$log', '$locati
 		attime: Date,
 		status: Boolean
 	}];
+	var encode = function(textString){
+		console.log(textString);
+	    var words = CryptoJS.enc.Utf8.parse(textString); // WordArray object
+	    var base64 = CryptoJS.enc.Base64.stringify(words); // string: 'SGVsbG8gd29ybGQ='
+	    console.log(base64);
+	    return base64;
+	}
+
+	var decode = function(base64){
+		var words = CryptoJS.enc.Base64.parse(base64);
+	    var textString = CryptoJS.enc.Utf8.stringify(words); // 'Hello world'
+	    console.log(textString);
+	    return textString;
+	}
 	$scope.init = function() {
-		var url = $location.absUrl();
-		var query = {'email':url.substr(url.lastIndexOf('=')+1)};
+		var url = $location.absUrl().substr($location.absUrl().lastIndexOf('?')+1);
+		var aftdec = decode(url);
+		var query = {'email':aftdec.substr(aftdec.lastIndexOf('=')+1)};
 		$http.post('/sstin', query).success(function(response){
             $scope.student = response;
             console.log($scope.student);
@@ -51,20 +66,6 @@ app.controller('testController', ['$scope', '$http', '$window', '$log', '$locati
 	        });*/
         });
 	};
-	var encode = function(textString){
-		console.log(textString);
-	    var words = CryptoJS.enc.Utf8.parse(textString); // WordArray object
-	    var base64 = CryptoJS.enc.Base64.stringify(words); // string: 'SGVsbG8gd29ybGQ='
-	    console.log(base64);
-	    return base64;
-	}
-
-	var decode = function(base64){
-		var words = CryptoJS.enc.Base64.parse(base64);
-    var textString = CryptoJS.enc.Utf8.stringify(words); // 'Hello world'
-    console.log(textString);
-    return textString;
-	}
 	$scope.viewCourses = function() {
 		var base64 = encode("email="+$scope.student.mail+"?type~student");
 		var url="/courses.html?"+base64;
