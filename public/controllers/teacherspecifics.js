@@ -48,7 +48,7 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
 		console.log("here");
 		$scope.reset(assessment);
 		console.log(assessments);
-		var query ={"assessment": assessments, "name": $scope.course.name};
+		var query ={"assessments": assessments, "name": $scope.course.name};
 		console.log(query);
 		$http.post('/assessment',query).success(function(response){
 			console.log(response);

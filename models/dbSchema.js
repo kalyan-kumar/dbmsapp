@@ -52,7 +52,7 @@ var assignmentSchema = new Schema({
 var Assignment = mongoose.model('Assignment', assignmentSchema);
 
 var questionSchema = new Schema({
-	question: String,
+	qname: String,
 	optionA: String,
 	optionB: String,
 	optionC: String,

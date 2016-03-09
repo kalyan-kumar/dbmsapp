@@ -77,31 +77,25 @@ exports.addCour = function (req, res, next) {
 
 exports.addassessment = function (req, res, next)
 {
-	console.log("Adding Assessment");
-	modules.Course.find({'name':req.body.name}, function(err, docs){
-		if (err) return handleError(err);
-		if (docs.length == 0) {
-			res.send("no such course found")
-			}
-			
-		 else {
-			var instance=new modules.Assessment();
-			instance.questions=req.body.assessment;
-			console.log(instance.questions);
-
-			// instance.index=docs.assessments.length;
-			modules.Course.findOneAndUpdate({'name':req.body.name}, {$push:{"assessments": instance}, function(err, model){
-				if(err){
-					console.log("why god why?");
-					return handleError(err);
-				} 
-				else {console.log("adding it ");
-				}
-			}
-		});
-		}
+	// console.log(req.body);
+	console.log("yahan");
+	var instance=new modules.Assessment();
+	instance.questions=req.body.assessments;
+	console.log(req.body.assessments);
+	modules.Course.findOneAndUpdate({'name':req.body.name}, {$push:{"assessments":{"questions":req.body.assessments}}}, function(err, model)
+	{
+		if(err)
+		{
+			console.log("why god why?");
+			return handleError(err);
+		} 
+		console.log("adding it ");
+		res.send("success");
 	});
-};
+	// instance.index=docs.assessments.length;
+	
+}
+
 
 
 
