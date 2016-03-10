@@ -49,12 +49,16 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
     return textString;
   }
   $scope.dloadfile = function(id){
-    assigntxt="wefdfvdabfl";
+    console.log(id);
+        assigntxt=$scope.course.assignments[id].statement;
+      }
+  $scope.TestAngularMethod = function(text){
+    var query={'student':$scope.student, 'id':$scope.course._id,'ass_name':text};
+    $http.post('/sendass', query).success(function(response){
+            console.log(response);
+
+        });
   }
-   $scope.TestAngularMethod = function(text){
-    console.log(text);
-  }
-   assignm=[]
 	$scope.init = function() {
    // $scope.assigntxt="wwww";
     var sub = $location.absUrl().substr($location.absUrl().lastIndexOf('?')+1);
@@ -68,12 +72,9 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
             $scope.student=response.student;
             studentemail = response.student.mail;
             $scope.course=response.course;
-            assignm = $scope.course.assignments; 
-                console.log(assignm);
+            $scope.assignm = $scope.course.assignments; 
           
         });
-    console.log("fmo");
-     console.log("fmo");
 	}
   var assesslist=[];
   $scope.openthis=function($index)
