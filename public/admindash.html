@@ -68,18 +68,16 @@
                             <i class="icon-bell-l"></i>
                             <span class="badge bg-important">{{noofnotifs}}</span>
                         </a>
-                        <ul class="dropdown-menu extended notification" style="width: 300px;">
+                        <ul class="dropdown-menu extended notification" style="width: 350px;">
                             <div class="notify-arrow notify-arrow-blue"></div>
                             <li>
                                 <p class="blue">You have {{noofnotifs}} new notifications</p>
                             </li>
                             <li ng-repeat="notif in notiflist" style="padding: 10px;">
                                 <!-- <a href="#"> -->
-                                    <span class="label " style="color: #797979; padding: 0px; font-weight: 500;font-size: 100%;">{{notif.firstname}} requested to be a teacher.&nbsp
-                                    <!-- </span>  -->
+                                    <span class="label " style="color: #797979; padding: 10px; font-weight: 500;font-size: 100%;">{{notif.firstname}} requested to be a teacher.</span> 
                                     
-                                    <!-- <span class="small italic pull-right" style="color:red; padding-bottom: 10px;"> -->
-                                    <img src="img/tick.png" title="Approve" height="15px;" ng-click="accept(notif.mail)">&nbsp&nbsp<img src="img/cross.png" title="Reject" height="15px;" ng-click="reject(notif.mail)"></span>
+                                    <span class="small italic pull-right" style="color:red"><img src="img/tick.png" title="Approve" height="15px;" ng-click="accept(notif.mail)">&nbsp   &nbsp&nbsp&nbsp<img src="img/cross.png" title="Reject" height="15px;" ng-click="reject(notif.mail)"></span>
                                 <!-- </a> -->
                             </li>   
                         </ul>

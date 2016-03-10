@@ -178,7 +178,7 @@ app.post('/admin', login.loadAData);
 app.get('/admins', login.approveList);
 app.post('/files', login.acceptit);
 app.post('/adaccept', login.acceptit);
-
+app.post('/noticecourse',updcour.noticecourse)
 app.post('/adreject', login.rejectit);
 app.post('/assessment', updcour.addassessment);
 app.post('/getassessment', indiv.getassessment);

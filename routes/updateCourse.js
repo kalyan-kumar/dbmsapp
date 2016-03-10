@@ -58,10 +58,13 @@ exports.addCour = function (req, res, next) {
 	modules.Course.find({'name':req.body.name}, function(err, docs){
 		if (err) return handleError(err);
 		if (docs.length == 0) {
+			// console.log(req.body);
 			var instance = new modules.Course();
 			instance.name = req.body.name;
 			instance.prof = req.body.ID;
+
 			console.log(instance);
+
 			instance.save(function(err){
 				if (err) return handleError(err);
 				modules.Instructor.findOneAndUpdate({'_id':req.body.ID}, {$push:{"courses":instance._id}}, function(err, model){
@@ -82,9 +85,17 @@ exports.addassessment = function (req, res, next)
 	// console.log(req.body);
 	console.log("yahan");
 	var instance=new modules.Assessment();
-	instance.questions=req.body.assessments;
-	console.log(req.body.assessments);
-	modules.Course.findOneAndUpdate({'name':req.body.name}, {$push:{"assessments":{"questions":req.body.assessments}}}, function(err, model)
+	for (var i = 0;i<req.body.assessments.length ; i++) {
+		var ques= new modules.Question();
+		ques=req.body.assessments[i];
+		instance.questions.push(ques);
+		console.log(ques);
+		console.log("----------------------------");
+
+	};
+	console.log(instance)
+	// console.log(req.body.assessments);
+	modules.Course.findOneAndUpdate({'name':req.body.name}, {$push:{"assessments":instance}}, function(err, model)
 	{
 		if(err)
 		{
@@ -99,7 +110,24 @@ exports.addassessment = function (req, res, next)
 }
 
 
+exports.noticecourse=function(req,res,next)
+{
+	var instance = {};
+	modules.Course.find({'_id':req.body.ID},function(err,docs){
+		if (err) return handleError(err);
+		else
+		{
+			console.log(docs);
+			instance.assessmentlength=docs[0].assessments.length;
+			instance.name=docs[0].name;
+			console.log(docs);
 
+			res.json(instance);
+		}
+
+
+	});
+};
 
 exports.tagCour = function (req, res, next) {
 	console.log("Tagging Course");

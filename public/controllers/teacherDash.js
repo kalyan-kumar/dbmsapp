@@ -43,6 +43,8 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
 		console.log("nooo");
 		var base64 = encode("email="+$scope.teacher.mail+"?cname~"+$scope.coursename);
 		var url="/teacherspecific.html?"+ base64;
+
+
 		var query = {'ID':$scope.teacher._id, 'name':$scope.coursename};
 		$http.post('/dummyadd', query).success(function(response){
             console.log(response);
