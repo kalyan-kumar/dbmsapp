@@ -191,6 +191,7 @@ app.post('/updcour', updcour.makeChange);
 app.post('/dummyadd', updcour.addCour);
 app.post('/getteachcour', updcour.tagCour);
 app.post('/courname', login.courseName);
+app.post('/courdate', login.courseDate);
 
 app.post('/files', submit.savefile);
 /*

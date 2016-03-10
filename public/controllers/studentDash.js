@@ -33,15 +33,18 @@ app.controller('testController', ['$scope', '$http', '$window', '$log', '$locati
 		$http.post('/sstin', query).success(function(response){
             $scope.student = response;
             console.log($scope.student);
-            var i, j, x, y, instance, d = new Date();
+            var i, j, x, y, instance;
 	    	for(i=0;i<$scope.student.courses.length;i++){
 	    		var query = {ID:$scope.student.courses[i]};
 	    		$http.post('/courname', query).success(function(response){
+	    			console.log(response);
 	    			$scope.courseNames.push({_id:$scope.student.courses[i], name:response.name, prof:response.prof});
 	    			// console.log($scope.courseNames);
 	    		});
+	    		$http.post('/courdate', query).success(function(response){
+	       			
+	       		});
 	    		for(i=0;i<$scope.student.courses.length;i++){
-		    		var query = {ID:$scope.student.courses[i]};
 		    		$http.post('/noticecourse', query).success(function(response){
 		    			console.log(response);
 		    			$scope.noticearray.push({ quizlen:response.assessmentlength,name:response.name});
@@ -52,8 +55,12 @@ app.controller('testController', ['$scope', '$http', '$window', '$log', '$locati
 	    		}
 	    	}
 	    	
-	       	var now = d.getTime();
+	       	var now = Date().getTime();
 	       	x = $scope.student.courses.length;
+
+
+
+
 	        /*for(i=0;i<x;i++) {
 	        	y = $scope.student.courses[i].lectures.length;
 	        	for(j=0;j<y;j++){
