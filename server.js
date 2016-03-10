@@ -182,7 +182,7 @@ app.post('/noticecourse',updcour.noticecourse)
 app.post('/adreject', login.rejectit);
 app.post('/assessment', updcour.addassessment);
 app.post('/getassessment', indiv.getassessment);
-
+app.post('/remcour', updcour.remcour)
 app.post('/profile', login.loadData);
 app.post('/regcour', indiv.regCour);
 app.post('/viewcour', indiv.viewCour);

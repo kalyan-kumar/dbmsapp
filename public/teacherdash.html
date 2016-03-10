@@ -1,86 +1,86 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="dbmsapp">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
-    <meta name="author" content="GeeksLabs">
-    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-    <!-- <link rel="shortcut icon" href="img/favicon.png"> -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+  <meta name="author" content="GeeksLabs">
+  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+  <!-- <link rel="shortcut icon" href="img/favicon.png"> -->
 
-    <title>Homepage</title>
+  <title>Homepage</title>
 
-    <!-- Bootstrap CSS -->    
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- bootstrap theme -->
-    <!-- <link href="css/bootstrap-theme.css" rel="stylesheet"> -->
-    <!--external css-->
-    <!-- font icon -->
-    <!-- <link href="css/elegant-icons-style.css" rel="stylesheet" /> -->
-    <!-- <link href="css/font-awesome.min.css" rel="stylesheet" />     -->
-    <!-- full calendar css-->
+  <!-- Bootstrap CSS -->    
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- bootstrap theme -->
+  <!-- <link href="css/bootstrap-theme.css" rel="stylesheet"> -->
+  <!--external css-->
+  <!-- font icon -->
+  <!-- <link href="css/elegant-icons-style.css" rel="stylesheet" /> -->
+  <!-- <link href="css/font-awesome.min.css" rel="stylesheet" />     -->
+  <!-- full calendar css-->
 <!--     <link href="assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
- -->  
- <!-- <link href="assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" /> -->
-    <!-- easy pie chart-->
-    <!-- <link href="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/> -->
-    <!-- owl carousel -->
-    <!-- <link rel="stylesheet" href="css/owl.carousel.css" type="text/css"> -->
-  <link href="css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
-  <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
-    <!-- Custom styles -->
-  <link rel="stylesheet" href="css/fullcalendar.css">
-  <link href="css/widgets.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/style-responsive.css" rel="stylesheet" />
-  <link href="css/xcharts.min.css" rel=" stylesheet"> 
-  <link href="css/jquery-ui-1.10.4.min.css" rel="stylesheet">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
+-->  
+<!-- <link href="assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" /> -->
+<!-- easy pie chart-->
+<!-- <link href="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/> -->
+<!-- owl carousel -->
+<!-- <link rel="stylesheet" href="css/owl.carousel.css" type="text/css"> -->
+<link href="css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
+<!-- Custom styles -->
+<link rel="stylesheet" href="css/fullcalendar.css">
+<link href="css/widgets.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/style-responsive.css" rel="stylesheet" />
+<link href="css/xcharts.min.css" rel=" stylesheet"> 
+<link href="css/jquery-ui-1.10.4.min.css" rel="stylesheet">
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
       <script src="js/lte-ie7.js"></script>
-    <![endif]-->
-  </head>
+      <![endif]-->
+    </head>
 
-  <body  ng-controller="mainController" ng-init="init()" >
-  <!-- container section start -->
-  <section id="container" class="">
-      <header class="header dark-bg">
-            <div class="nav search-row" id="top_menu">
-                <!--  search form start -->
-                <ul class="nav top-menu">                    
-                    <li>
-                        <form class="navbar-form">
-                            <input class="form-control" placeholder="Search Course" type="text">
-                        </form>
-                    </li>                    
-                </ul>
-                <!--  search form end -->                
-            </div>
+    <body  ng-controller="mainController" ng-init="init()" >
+      <!-- container section start -->
+      <section id="container" class="">
+        <header class="header dark-bg">
+          <div class="nav search-row" id="top_menu">
+            <!--  search form start -->
+            <ul class="nav top-menu">                    
+              <li>
+                <form class="navbar-form">
+                  <input class="form-control" placeholder="Search Course" type="text">
+                </form>
+              </li>                    
+            </ul>
+            <!--  search form end -->                
+          </div>
 
-            <div class="top-nav notification-row">                
-                <!-- notificatoin dropdown start-->
-                <ul class="nav pull-right top-menu">
-                <li>
-                        <a href="#" ng-click="goHome()">
-                            <span class="profile-ava">
-                                <img alt="" src="img/home.png" height="30px">
-                            </span>
-                            <span class="allcourses">Home</span>
-                        </a>
-                    </li>
-                   
-                    <!-- user login dropdown start-->
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="profile-ava">
-                                <img alt="" src="img/student.png" height="30px">
-                            </span>
-                            <span class="username">{{teacher.firstname}}</span>
-                            <b class="caret"></b>
-                        </a>
-                       <ul class="dropdown-menu extended logout">
+          <div class="top-nav notification-row">                
+            <!-- notificatoin dropdown start-->
+            <ul class="nav pull-right top-menu">
+              <li>
+                <a href="#" ng-click="goHome()">
+                  <span class="profile-ava">
+                    <img alt="" src="img/home.png" height="30px">
+                  </span>
+                  <span class="allcourses">Home</span>
+                </a>
+              </li>
+
+              <!-- user login dropdown start-->
+              <li class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                  <span class="profile-ava">
+                    <img alt="" src="img/student.png" height="30px">
+                  </span>
+                  <span class="username">{{teacher.firstname}}</span>
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu extended logout">
                   <div class="log-arrow-up"></div>
                   <li class="eborder-top">
                     <a href="#" ng-click="profile()"><i class="icon_profile"></i> My Profile</a>
@@ -92,49 +92,49 @@
               </li>
               <!-- user login dropdown end -->
             </ul>
-                    </li>
-                    <!-- user login dropdown end -->
-                </ul>
-                <!-- notificatoin dropdown end-->
-            </div>
-      </header>      
-      <!--header end-->
+          </li>
+          <!-- user login dropdown end -->
+        </ul>
+        <!-- notificatoin dropdown end-->
+      </div>
+    </header>      
+    <!--header end-->
 
-      <!--sidebar start-->
-      <aside>
-          <div id="sidebar"  class="nav-collapse ">
-             
-              <ul class="sidebar-menu">                
+    <!--sidebar start-->
+    <aside>
+      <div id="sidebar"  class="nav-collapse ">
+
+        <ul class="sidebar-menu">                
                   <!-- <li class="active">
                       <a class="" href="#mycourse"> 
                           <i class="icon_house_alt"></i>
                           <span>Registered Courses</span>
                       </a>
-                  </li> -->
-                  <li class="sub-menu">
+                    </li> -->
+                    <li class="sub-menu">
                       <a class="" href="#teach">
-                          <!-- <i class="icon_house_alt"></i> -->
-                          <span>My Courses</span>
+                        <!-- <i class="icon_house_alt"></i> -->
+                        <span>My Courses</span>
                       </a>
-                  </li>
+                    </li>
                   <!-- <li class="sub-menu">
                       <a class="" href="#cc">
                           <i class="icon_house_alt"></i>
                           <span>Course Calendar</span>
                       </a>
-                  </li> -->
-                  <li class="sub-menu">
+                    </li> -->
+                    <li class="sub-menu">
                       <a class="" href="#notice">
-                          <!-- <i class="icon_house_alt"></i> -->
-                          <span>Notice Board</span>
+                        <!-- <i class="icon_house_alt"></i> -->
+                        <span>Notice Board</span>
                       </a>
-                  </li>
-                  <li class="sub-menu">
+                    </li>
+                    <li class="sub-menu">
                       <a class="" href="#">
-                          <!-- <i class="icon_house_alt"></i> -->
-                          <span><button type="button" class ="but" data-toggle="modal" data-target="#myModal2">Add New Course</button></span>
+                        <!-- <i class="icon_house_alt"></i> -->
+                        <span><button type="button" class ="but" data-toggle="modal" data-target="#myModal2">Add New Course</button></span>
                       </a>
-                  </li>
+                    </li>
           <!-- <li class="sub-menu">
                       <a href="javascript:;" class="">
                           <i class="icon_document_alt"></i>
@@ -197,22 +197,22 @@
                           <li><a class="" href="404.html">404 Error</a></li>
                       </ul>
                   </li>
-               -->    
+                -->    
               </ul>
               
-          </div>
-      </aside>
-      <!--sidebar end-->
-      
-      <!--main content start-->
-      <section id="main-content">
-          <section class="wrapper">            
+            </div>
+          </aside>
+          <!--sidebar end-->
+
+          <!--main content start-->
+          <section id="main-content">
+            <section class="wrapper">            
               <!--overview start-->
-        <div class="row">
-        <div class="col-lg-12">
-          <h3 class="page-header"><i class="fa fa-laptop"></i>dashboard</h3>
-        </div>
-      </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <h3 class="page-header"><i class="fa fa-laptop"></i>dashboard</h3>
+                </div>
+              </div>
               
            <!--  <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
@@ -248,9 +248,9 @@
         </div>
         
       </div> -->
-    
+
       
-           <div class="row">
+      <div class="row">
         <!-- <div class="col-md-8"  id="mycourse">
           
           <div class="panel panel-default">
@@ -275,119 +275,122 @@
           </div>
         </div> -->
         <div class="col-md-8" id="teach">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h2><i class="fa fa-map-marker red"></i><strong>My Courses </strong></h2>
-                    
-                </div>
-                <div class="panel-body-map" style="padding: 20px;">
-                <p align="center" ng-repeat="course in teacher.courses" style=" text-align: center;" ><a href="#" ng-click="linkit(course.name)">{{course.name}}</a></p>
-                </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h2><i class="fa fa-map-marker red"></i><strong>My Courses </strong></h2>
 
             </div>
-           </div>  
-              <div class="col-md-4"  id="notice">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h2><i class="fa fa-map-marker red"></i><strong>Notice Board</strong></h2>
-                </div>
-                <div class="panel-body-map" style="padding: 20px;">
-                </div>
-
+            <div class="panel-body-map" style="padding: 20px;">
+              <p align="center" ng-repeat="course in teacher.courses" style=" text-align: center;" ><a href="#" ng-click="linkit(course.name)">{{course.name}}</a></p>
             </div>
-           </div>  
-        </div>
+
+          </div>
+        </div>  
+        <div class="col-md-4"  id="notice">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h2><i class="fa fa-map-marker red"></i><strong>Notice Board</strong></h2>
+            </div>
+            <div class="panel-body-map" style="padding: 10px;">
+            <!-- <p ng-repeat="cour in noticeteacher">
+                {{cour.name}} has cour.numstud students registered.
+              </p> -->
+            </div>
+
+          </div>
+        </div>  
+      </div>
       
       <!-- Today status end -->
       
-              
-              <!-- project team & activity start -->
-          
-                              </tbody>
-                          </table>
-                      </section>
-                      <!--Project Activity end-->
-                  </div>
-                  
-              </div><br><br>
-    <div id="myModal2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <form class="addcourse" novalidate>
-                                    <p class="title">Course Details</p>
-                                    <input type="text" placeholder="Course Name" ng-model="coursename" required autofocus/>
-                                    <i class="fa fa-user"></i>
-                                    <button ng-click="addcourse()">
-                                        <i class="spinner"></i>
-                                        <span class="state">Add Course</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                  <div class="widget-foot">
-                    <!-- Footer goes here -->
-                  </div>
-                </div>
-              </div>
-              
-            </div>
-                        
-          </div> 
-              <!-- project team & activity end -->
 
-          </section>
-      </section>
-      <!--main content end-->
-  </section>
-  <!-- container section start -->
+      <!-- project team & activity start -->
 
-    <!-- javascripts -->
-   <script src="js/jquery.js"></script>
-  <!-- // <script src="js/jquery-ui-1.10.4.min.js"></script> -->
-    <!-- // <script src="js/jquery-1.8.3.min.js"></script> -->
-    <!-- // <script type="text/javascript" src="js/jquery-ui-1.9.2.custom.min.js"></script> -->
-    <!-- bootstrap -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- nice scroll -->
-    <!-- // <script src="js/jquery.scrollTo.min.js"></script> -->
-    <!-- // <script src="js/jquery.nicescroll.js" type="text/javascript"></script> -->
-    <!-- charts scripts -->
-    <!-- // <script src="assets/jquery-knob/js/jquery.knob.js"></script> -->
-    <!-- // <script src="js/jquery.sparkline.js" type="text/javascript"></script> -->
-    <!-- // <script src="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script> -->
-    <!-- // <script src="js/owl.carousel.js" ></script> -->
-    <!-- jQuery full calendar -->
-    <!-- <<script src="js/fullcalendar.min.js"></script> Full Google Calendar - Calendar --> 
-  <!-- // <script src="assets/fullcalendar/fullcalendar/fullcalendar.js"></script> -->
-    <!--script for this page only-->
-    <!-- // <script src="js/calendar-custom.js"></script> -->
-  <!-- // <script src="js/jquery.rateit.min.js"></script> -->
-    <!-- custom select -->
-    <!-- // <script src="js/jquery.customSelect.min.js" ></script> -->
-  <!-- // <script src="assets/chart-master/Chart.js"></script> -->
-   
-    <!--custome script for all page-->
-    <!-- // <script src="js/scripts.js"></script> -->
-    <!-- custom script for this page-->
-    <!-- // <script src="js/sparkline-chart.js"></script> -->
-    <!-- // <script src="js/easy-pie-chart.js"></script> -->
-  <!-- // <script src="js/jquery-jvectormap-1.2.2.min.js"></script> -->
-  <!-- // <script src="js/jquery-jvectormap-world-mill-en.js"></script> -->
-  <!-- // <script src="js/xcharts.min.js"></script> -->
-  <!-- // <script src="js/jquery.autosize.min.js"></script> -->
-  <!-- // <script src="js/jquery.placeholder.min.js"></script> -->
-  <!-- // <script src="js/gdp-data.js"></script>   -->
-  <!-- // <script src="js/morris.min.js"></script> -->
-  <!-- // <script src="js/sparklines.js"></script>   -->
-  <!-- // <script src="js/charts.js"></script> -->
-  <!-- // <script src="js/jquery.slimscroll.min.js"></script> -->
-  <script>
+    </tbody>
+  </table>
+</section>
+<!--Project Activity end-->
+</div>
 
-   
-    /* ---------- Map ---------- */
+</div><br><br>
+<div id="myModal2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form class="addcourse" novalidate>
+          <p class="title">Course Details</p>
+          <input type="text" placeholder="Course Name" ng-model="coursename" required autofocus/>
+          <i class="fa fa-user"></i>
+          <button ng-click="addcourse()">
+            <i class="spinner"></i>
+            <span class="state">Add Course</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="widget-foot">
+  <!-- Footer goes here -->
+</div>
+</div>
+</div>
+
+</div>
+
+</div> 
+<!-- project team & activity end -->
+
+</section>
+</section>
+<!--main content end-->
+</section>
+<!-- container section start -->
+
+<!-- javascripts -->
+<script src="js/jquery.js"></script>
+<!-- // <script src="js/jquery-ui-1.10.4.min.js"></script> -->
+<!-- // <script src="js/jquery-1.8.3.min.js"></script> -->
+<!-- // <script type="text/javascript" src="js/jquery-ui-1.9.2.custom.min.js"></script> -->
+<!-- bootstrap -->
+<script src="js/bootstrap.min.js"></script>
+<!-- nice scroll -->
+<!-- // <script src="js/jquery.scrollTo.min.js"></script> -->
+<!-- // <script src="js/jquery.nicescroll.js" type="text/javascript"></script> -->
+<!-- charts scripts -->
+<!-- // <script src="assets/jquery-knob/js/jquery.knob.js"></script> -->
+<!-- // <script src="js/jquery.sparkline.js" type="text/javascript"></script> -->
+<!-- // <script src="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script> -->
+<!-- // <script src="js/owl.carousel.js" ></script> -->
+<!-- jQuery full calendar -->
+<!-- <<script src="js/fullcalendar.min.js"></script> Full Google Calendar - Calendar --> 
+<!-- // <script src="assets/fullcalendar/fullcalendar/fullcalendar.js"></script> -->
+<!--script for this page only-->
+<!-- // <script src="js/calendar-custom.js"></script> -->
+<!-- // <script src="js/jquery.rateit.min.js"></script> -->
+<!-- custom select -->
+<!-- // <script src="js/jquery.customSelect.min.js" ></script> -->
+<!-- // <script src="assets/chart-master/Chart.js"></script> -->
+
+<!--custome script for all page-->
+<!-- // <script src="js/scripts.js"></script> -->
+<!-- custom script for this page-->
+<!-- // <script src="js/sparkline-chart.js"></script> -->
+<!-- // <script src="js/easy-pie-chart.js"></script> -->
+<!-- // <script src="js/jquery-jvectormap-1.2.2.min.js"></script> -->
+<!-- // <script src="js/jquery-jvectormap-world-mill-en.js"></script> -->
+<!-- // <script src="js/xcharts.min.js"></script> -->
+<!-- // <script src="js/jquery.autosize.min.js"></script> -->
+<!-- // <script src="js/jquery.placeholder.min.js"></script> -->
+<!-- // <script src="js/gdp-data.js"></script>   -->
+<!-- // <script src="js/morris.min.js"></script> -->
+<!-- // <script src="js/sparklines.js"></script>   -->
+<!-- // <script src="js/charts.js"></script> -->
+<!-- // <script src="js/jquery.slimscroll.min.js"></script> -->
+<script>
+
+
+  /* ---------- Map ---------- */
   // $(function(){
   //   $('#map').vectorMap({
   //     map: 'world_mill_en',
@@ -405,7 +408,7 @@
   //   });
   // });
 
-function centerModal() {
+  function centerModal() {
     $(this).css('display', 'block');
     var $dialog = $(this).find(".modal-dialog");
     var offset = ($(window).height() - $dialog.height()) / 2;
@@ -416,16 +419,16 @@ function centerModal() {
     var off = ($(window).width() - $dialog.width()) / 2;
     // Center modal vertically in window
     $dia.css("margin-left", off);
-}
+  }
 
-$('.modal').on('show.bs.modal', centerModal);
-$(window).on("resize", function () {
+  $('.modal').on('show.bs.modal', centerModal);
+  $(window).on("resize", function () {
     $('.modal:visible').each(centerModal);
-});
+  });
 
-  </script>
+</script>
 <script src="js/angular.min.js"></script>
 <script src="controllers/teacherDash.js"></script>
 <script src="js/angular-route.js"></script>
-  </body>
+</body>
 </html>

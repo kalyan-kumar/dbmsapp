@@ -106,4 +106,21 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
         });			
 	};
 
+	$scope.remcourse = function(){
+		console.log($scope.remval);
+		if($scope.remval == "yes")
+		{
+			var query = {"_id": $scope.course._id};
+			$http.post('/remcour',query).success(function(response){
+				console.log(response);
+			});
+		}
+	};
+	$scope.fetchenroll = function(){
+		var query ={"enrollist": $scope.course.enrollist, "cname":$scope.course.name};
+		console.log(query);
+		$http.post('getlist',query).success(function(response){
+			console.log(response);
+		});
+	};
 }]);

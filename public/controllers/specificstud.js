@@ -95,11 +95,18 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
  };
  $scope.mailfac = function(){
   var data={};
-  data.content = $scope.mail.cont;
-  data.sub = $scope.mail.sub;
-  data.fac = $scope.course.prof.mail;
-  data.stud = $scope.student.mail;
-  $http.post('/contact-form', data).success(function(response){
+  // var data = {
+  //   from: req.body.name + '<' + req.body.sendermail + '>',
+  //   to: req.body.email,
+  //   subject: req.body.subject,
+  //   text: req.body.text
+  // };
+  data.text = $scope.mail.cont;
+  data.subject = $scope.mail.sub;
+  data.email = $scope.course.prof.mail;
+  data.name = $scope.student.firstname;
+  data.sendermail = $scope.student.mail;
+  $http.post('/contactform', data).success(function(response){
     console.log("Mail sent");
   });
  };

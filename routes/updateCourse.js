@@ -129,6 +129,22 @@ exports.noticecourse=function(req,res,next)
 	});
 };
 
+exports.remcour=function(req,res,next)
+{	
+	// var instance={};
+	modules.Course.findOne({'_id':req.body.ID},function(err,docs){
+		if (err) return handleError(err);
+		else
+		{	
+			modules.Course.remove(docs);
+			modules.Course.save(function(err){
+				if (err) return handleError(err);
+			});
+			res.send("removed");
+		}
+	});
+};
+
 exports.tagCour = function (req, res, next) {
 	console.log("Tagging Course");
 	var instr = {};
