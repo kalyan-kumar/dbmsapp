@@ -230,7 +230,7 @@
                           <h2><i class="fa fa-map-marker red"></i><strong>Check Submissions</strong></h2>
                         </div>
                         <div class="panel-body-map" id="textbox" style="padding: 20px;height: auto;">
-                          <p><button type="button" class="btn btn-primary" style="background-color: #2196F3" data-toggle="modal" data-target="#myModal" ng-click="fetchenroll()">Assignment 1</button></p>
+                          <p><button type="button" class="btn btn-primary" style="background-color: #2196F3" data-toggle="modal" data-target="#myModal" ng-repeat="assign in course.assignments" ng-click="fetchenroll($index)">Assignment {{($index)+1}}</button></p>
                           <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                               <div class="modal-content" style="max-height: 500px; overflow-y: hidden;">
@@ -241,12 +241,12 @@
                                       <th>Student Name</th>
                                       <th>Submission</th>
                                     </tr>
-                                      <tr>
+                                    <tr ng-repeat="ass in checkthese">
                                       <td>
-                                        {{studname}}
+                                        {{ass.name}}
                                       </td>
                                         <td>
-                                          <form onsubmit="download('ass.txt',studass)" >
+                                          <form ng-click="getthefile($index)" onsubmit="download('ass.txt',studass)" >
                                             <input type="submit" value="Assignment" class="upload">
                                           </form>
                                         </td>
@@ -259,7 +259,7 @@
                                           </td>
                                         </form> -->
 
-                                      </tr>
+                                    </tr>
                                     </tbody>
                                   </table>
                                 </div>

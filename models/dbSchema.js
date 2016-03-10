@@ -34,9 +34,10 @@ var Admin = mongoose.model('Admin', adminSchema);
 
 var submissionSchema = new Schema({
 	content: String,
+	cid: ObjectId,
+	sid: ObjectId,
 	asstitle: String,
 	ofcour: String,
-	ahas: String,
 	maxtime: Date,
 	subtime: Date
 });

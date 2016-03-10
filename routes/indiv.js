@@ -114,3 +114,29 @@ exports.makeCour = function(req, res, next){
 		}
 	});
 };
+
+exports.getlist = function(req, res, next) {
+	var i, instance=[];
+	console.log(req.body.enrollist[0]);
+	for(i=0;i<req.body.enrollist.length;i++){
+		modules.Student.find({'_id':req.body.enrollist[i]}, function(err, docs) {
+			if (err) return handleError(err);
+			if (docs.length == 0) {
+				res.send("No account exists with this email");
+			} else if(docs.length > 1) {
+				console.log("You fucked up again. Seriously Kalyan? -_-");
+			} else {
+				var i, tmp = {};
+				for(i=0;i<docs[0].submissions;i++){
+					if(docs[0].submissions[i].cid==req.body.cname){
+						tmp.name = docs[0].firstname;
+						tmp.submit = docs[0].submissions[i].content;
+						instance.push(tmp);
+						break;
+					}
+				}
+				res.json(instance);
+			}
+		});
+	}
+};
