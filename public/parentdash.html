@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="dbmsapp">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+  <meta name="author" content="GeeksLabs">
+  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+  <!-- <link rel="shortcut icon" href="img/favicon.png"> -->
+
+  <title>Parent DashBoard</title>
+
+  <!-- Bootstrap CSS -->    
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- bootstrap theme -->
+  <!-- <link href="css/bootstrap-theme.css" rel="stylesheet"> -->
+  <!--external css-->
+  <!-- font icon -->
+  <link href="css/elegant-icons-style.css" rel="stylesheet" />
+  <link href="css/font-awesome.min.css" rel="stylesheet" />    
+  <!-- full calendar css-->
+  <!-- <link href="assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" /> -->
+  <!-- <link href="assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" /> -->
+  <!-- easy pie chart-->
+  <!-- <link href="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/> -->
+  <!-- owl carousel -->
+  <!-- <link rel="stylesheet" href="css/owl.carousel.css" type="text/css"> -->
+  <link href="css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="css/fullcalendar.css">
+  <link href="css/widgets.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style-responsive.css" rel="stylesheet" />
+  <link href="css/xcharts.min.css" rel=" stylesheet"> 
+  <link href="css/jquery-ui-1.10.4.min.css" rel="stylesheet">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+      <script src="js/lte-ie7.js"></script>
+      <![endif]-->
+    </head>
+
+    <body ng-controller="ParentController" ng-init="init()">
+      <!-- container section start -->
+      <section id="container" class="">
+        <header class="header dark-bg">
+          <div class="nav search-row" id="top_menu">
+            <!--  search form start -->
+            <ul class="nav top-menu">                    
+              <li>
+                <form class="navbar-form">
+                  <input class="form-control" placeholder="Search Course" type="text">
+                </form>
+              </li>                    
+            </ul>
+            <!--  search form end -->                
+          </div>
+
+          <div class="top-nav notification-row">                
+            <!-- notificatoin dropdown start-->
+            <ul class="nav pull-right top-menu">
+              <li>
+                <a href="#" ng-click="gotohome()">
+                  <span class="profile-ava">
+                    <img alt="" src="img/home.png" height="30px">
+                  </span>
+                  <span class="allcourses">Home</span>
+                </a>
+              </li>
+              <li>
+                <a ng-show="check()" href="#" ng-click="gotocourse()">
+                  <span class="profile-ava">
+                    <img alt="" src="img/course.png" height="30px">
+                  </span>
+                  <span class="allcourses">Courses</span>
+                </a>
+              </li>
+              <!-- user login dropdown start-->
+              <li class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                  <span class="profile-ava">
+                    <img alt="" src="img/student.png" height="30px">
+                  </span>
+                  <span class="username">{{get.firstname}}</span>
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu extended logout">
+                  <div class="log-arrow-up"></div>
+                  <li class="eborder-top">
+                    <a href="#"><i class="icon_profile"></i>Parent DashBoard</a>
+                  </li>
+                  <li>
+                    <a href="index.html"><i class="icon_key_alt"></i> Sign Out</a>
+                  </li>
+                </ul>
+              </li>
+              <!-- user login dropdown end -->
+            </ul>
+            <!-- notificatoin dropdown end-->
+          </div>
+        </header>      
+        <!--header end-->
+
+        <!--sidebar start-->
+        <!-- <aside> -->
+          <!-- <div id="sidebar"  class="nav-collapse ">
+
+            <ul class="sidebar-menu">                
+              <li class="sub-menu">
+                <a class="" href="#removefac"> -->
+                  <!-- <i class="icon_house_alt"></i> -->
+                  <!-- <span>Remove Faculty</span> -->
+                          <!-- <span class="menu-arrow arrow_carrot-right"></span>
+                          
+                          <ul class="sub">
+                          <li><a class="" href="#week1">Week1</a></li>
+                          <li><a class="" href="#week2">Week2</a></li>
+                        </ul> -->
+                      <!-- </a>
+                    </li>
+                    <li class="sub-menu">
+                      <a class="" href="#addfac"> -->
+                        <!-- <i class="icon_house_alt"></i> -->
+                        <!-- <span>Add Faculty</span> -->
+                          <!-- <span class="menu-arrow arrow_carrot-right"></span>
+                          </a>
+                          <ul class="sub">
+                          <li><a class="" href="#ass1">Week1</a></li>
+                          <li><a class="" href="#ass2">Week2</a></li>
+                        </ul> -->
+                      <!-- </a>
+                      
+                    </li>
+                    <li class="sub-menu">
+                      <a class="" href="#remcourse"> -->
+                        <!-- <i class="icon_house_alt"></i> -->
+                       <!--  <span>Remove Course</span>
+                      </a>
+                    </li>
+                  </ul>
+
+                </div> -->
+              <!-- </aside> -->
+              <!--sidebar end-->
+
+              <!--main content start-->
+              <section id="allcourses">
+                <section class="wrapper">            
+                  <!--overview start-->
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <h3 class="page-header">Parent DashBoard</h3>
+                    </div>
+                  </div>
+
+                   <div class="row">
+                    <div class="col-md-12"  id="aboutus">
+
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h2><class="fas" style="padding: 75px;"><strong>Course Name</strong></h2>
+                          <class="fas" style="padding:100px"><strong>Percentage Marks</strong></h2>
+                        </div>
+                        <div class="panel-body-map" style="padding: 20px;height: auto;">
+                          <table width="100%">
+                            <tr ng-repeat="cm in coursemarks">
+                              <td width="50%" style="border-right: 1px solid #ccc; padding: 10px;">{{cm.name}}</td>
+                              <td style="padding: 10px;">{{cm.perc}}</td>
+                            </tr>
+                          </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--
+                    <div class="row">
+                      <div class="col-md-12"  id="addfac">
+
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h2><i class="fa fa-map-marker red"></i><strong>Add Faculty</strong></h2>
+                          </div>
+                          <div class="panel-body-map" id="textbox" style="padding: 20px;height: auto;">
+                            <form class="updateteach" >
+                             <input type="email" placeholder="Email ID" />
+                            <button>
+                              <a href="#">
+                                <span class="state">Add</span></a>
+                              </button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12"  id="remcourse">
+
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h2><i class="fa fa-map-marker red"></i><strong>Remove Course</strong></h2>
+                          </div>
+                          <div class="panel-body-map" id="textbox" style="padding: 20px;height: auto;">
+                            <form class="updateteach" >
+                            <input type="text" placeholder="Course Name" />
+                            <button>
+                              <a href="#">
+                                <span class="state">Remove</span></a>
+                              </button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                 -->    
+                <div class="widget-foot">
+                  <!-- Footer goes here -->
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>  
+        <!-- project team & activity end -->
+
+      </section>
+    </section>
+    <!--main content end-->
+  </section>
+  <!-- container section start -->
+
+  <!-- javascripts -->
+  <script src="js/jquery.js"></script>
+ 
+  <!-- bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+  <!-- nice scroll -->
+   <script>
+
+      //knob
+      //custom select box
+
+      
+
+      var nav = $("#sidebar-menu");
+
+//add indicators and hovers to submenu parents
+nav.find("li").each(function() {
+  if ($(this).find("ul").length > 0) {
+
+    $("<span>").text("^").appendTo($(this).children(":first"));
+
+        //show subnav on hover
+        $(this).click(function() {
+          $(this).find("ul").stop(true, true).slideToggle();
+        });
+      }
+    });
+function centerModal() {
+  $(this).css('display', 'block');
+  var $dialog = $(this).find(".modal-dialog");
+  var offset = ($(window).height() - $dialog.height()) / 2;
+    // Center modal vertically in window
+    $dialog.css("margin-top", offset);
+    $(this).css('display', 'block');
+    var $dia = $(this).find(".modal-dialog");
+    var off = ($(window).width() - $dialog.width()) / 2;
+    // Center modal vertically in window
+    $dia.css("margin-left", off);
+  }
+
+  $('.modal').on('show.bs.modal', centerModal);
+  $(window).on("resize", function () {
+    $('.modal:visible').each(centerModal);
+  });
+
+</script>
+</script>
+<script src="js/angular.min.js"></script>
+<script src="controllers/parentdash.js"></script>
+<script src="js/angular-route.js"></script>
+
+</body>
+</html>
