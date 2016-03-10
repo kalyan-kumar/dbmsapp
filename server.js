@@ -173,7 +173,7 @@ app.get('/dummyadmin', function(req, res, next){
 		res.send('Mei tho wo kar diya');
 	});
 });
-
+app.post('/parentcheck',login.parent);
 app.post('/signup', signup.register);
 app.post('/login', login.checkauth);
 app.post('/stin', login.loadSData);
@@ -201,7 +201,6 @@ app.post('/courname', login.courseName);
 app.post('/courdate', login.courseDate);
 app.post('/contactform', updcour.sendmail);
 // app.post('/getlist', indiv.getlist);
-app.post('parentcheck',login.parent);
 app.post('/files', submit.savefile);
 /*
 // config files
