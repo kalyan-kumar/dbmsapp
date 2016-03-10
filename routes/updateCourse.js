@@ -135,6 +135,8 @@ exports.noticecourse=function(req,res,next)
 
 			res.json(instance);
 		}
+	});
+}
 
 exports.noticecourse=function(req,res,next)
 {
@@ -149,8 +151,7 @@ exports.noticecourse=function(req,res,next)
 			instance.assessmentlength=docs[0].assessments.length;
 			instance.name=docs[0].name;
 			console.log(docs);
-
-
+		}
 	});
 };
 exports.remcour=function(req,res,next)

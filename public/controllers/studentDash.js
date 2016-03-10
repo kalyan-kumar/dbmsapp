@@ -43,7 +43,8 @@ app.controller('testController', ['$scope', '$http', '$window', '$log', '$locati
 
 	    		});
 	    		$http.post('/courdate', query).success(function(response){
-	       			
+	       			console.log(response);
+	       			$scope.calendar.push({cname:response.cname, type:})
 	       		});
 	    		for(i=0;i<$scope.student.courses.length;i++){
 		    		$http.post('/noticecourse', query).success(function(response){
