@@ -233,7 +233,11 @@
                     <div class="panel-heading">
                         <h2><i class="fa fa-map-marker red"></i><strong>Notice Board</strong></h2>
                     </div>
-                    <div class="panel-body-map"></div>
+                    <div class="panel-body-map" style="padding: 10px;">
+                      <p ng-repeat="cour in noticearray">
+                        {{cour.name}} has {{cour.quizlen}} Self Assessment Quizzes and cour.asslen Assignments.
+                      </p>
+                    </div>
                 </div>
             </div>  
         </div>
@@ -257,9 +261,9 @@
                                 <td><strong>Type</strong></td>
                             </tr>
                             <tr ng-repeat="when in calendar">
-                                <td>{{when.attime}}</td>
-                                <td>{{when.ofcour}}</td>
-                                <td>{{when.name}}</td>
+                                <td>{{when.when}}</td>
+                                <td>{{when.cname}}</td>
+                                <td>{{when.title}}</td>
                                 <td>{{when.type}}</td>
                             </tr>
                             <!--
@@ -354,7 +358,7 @@
     <!-- <script src="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script> -->
     <!-- <script src="js/owl.carousel.js" ></script> -->
     <!-- jQuery full calendar -->
-    <!-- <<script src="js/fullcalendar.min.js"></script> <!-- Full Google Calendar - Calendar --> -->
+    <!-- <<script src="js/fullcalendar.min.js"></script> <!-- Full Google Calendar - Calendar -->
   <!-- <script src="assets/fullcalendar/fullcalendar/fullcalendar.js"></script> -->
     <!--script for this page only-->
     <!-- <script src="js/calendar-custom.js"></script> -->

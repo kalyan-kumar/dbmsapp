@@ -40,6 +40,8 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
     console.log(base64);
     return base64;
   }
+  var score = 0;
+  var i=0;
   var decode = function(base64){
     var words = CryptoJS.enc.Base64.parse(base64);
     var textString = CryptoJS.enc.Utf8.stringify(words); // 'Hello world'
@@ -72,6 +74,13 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
     console.log(assignm);
      console.log("fmo");
 	}
+  var assesslist=[];
+  $scope.openthis=function($index)
+  {
+    console.log($scope.course.assessments[$index].questions[i]);
+    assesslist=$scope.course.assessments[$index].questions;
+    $scope.question=$scope.course.assessments[$index].questions[i];
+  }
 	$scope.goHome = function() {
     var base64=encode("?email="+studentemail);
 		var url="/studentdash.html?"+base64;
@@ -97,4 +106,22 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
     console.log("Mail sent");
   });
  };
+   $scope.nextform = function() {
+    console.log($scope.optionRadios);
+    if ($scope.optionRadios+1==assesslist[i].key){
+      score=score+1;
+    }
+    i=i+1;
+    if(assesslist.length>i){
+      $scope.question=assesslist[i];
+      // $scope.start();
+    }
+    else{
+      alert("Your final score is : " + score);
+     // $scope.closeSelf();
+     $('#myModal').modal('hide');
+     i=0;
+     score=0;
+    } 
+  };
 }]);

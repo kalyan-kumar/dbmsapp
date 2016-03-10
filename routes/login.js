@@ -142,6 +142,28 @@ exports.courseName = function(req, res, next) {
 	});
 }
 
+exports.courseDate = function(req, res, next) {
+	var instance = [];
+	modules.Course.find({'_id':req.body.ID}, function(err, docs){
+		if (err) return handleError(err);
+		if(docs.length == 0) {
+			res.send("failed");
+		} else if(docs.length > 1) {
+			console.log("You fucked up while registering users. Seriously Kalyan? -_-");
+		} else {
+			var i, tmp = {};
+			for(i=0;i<docs[0].assignments.length;i++){
+				tmp.cname = docs[0].name;
+				tmp.type = "Assignment";
+				tmp.title = docs[0].assignments[i].title;
+				tmp.when = docs[0].assignments[i].deadline;
+				instance.push(tmp);
+			}
+			res.json(instance);
+		}
+	});
+}
+
 exports.loadAData = function(req, res, next) {
 	console.log("Getting the student data1234");
 	modules.Admin.find({'mail':req.body.email}, function(err, docs){

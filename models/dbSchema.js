@@ -44,12 +44,10 @@ var Submission = mongoose.model('Submission', submissionSchema);
 
 var assignmentSchema = new Schema({
 	title: String,
-	cname: String,
 	index: Number,
-	ahas: String,
+	statement: String,
 	float: Date,
-	deadline: Date,
-	statement: String
+	deadline: Date
 });
 var Assignment = mongoose.model('Assignment', assignmentSchema);
 
