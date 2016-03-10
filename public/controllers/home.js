@@ -89,9 +89,16 @@ app.controller('signController', ['$scope', '$http', '$log', '$window', '$locati
     }
 }]);
 
-app.controller("parentController",['$http',function($http){
+app.controller("parentController",['$scope', '$http', '$log', '$window', '$location', function($scope, $http, $log, $window, $location){
     this.user={};
+    console
     this.checkauth=function(user){
-
+        console.log("here");
+        var query = {"email":$scope.parent.email, "dob": $scope.parent.dob};
+        $http.post('/parentcheck', query).success(function(response){
+            console.log(response);
+            if(response=="success")
+                $window.location.href = "/parentdash.html?email="+$scope.parent.email;
+        });
     }
 }]);

@@ -200,8 +200,8 @@ app.post('/getteachcour', updcour.tagCour);
 app.post('/courname', login.courseName);
 app.post('/courdate', login.courseDate);
 app.post('/contactform', updcour.sendmail);
-app.post('/getlist', indiv.getlist);
-
+// app.post('/getlist', indiv.getlist);
+app.post('parentcheck',login.parent);
 app.post('/files', submit.savefile);
 /*
 // config files
