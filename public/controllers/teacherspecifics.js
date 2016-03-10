@@ -126,7 +126,7 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
 		}
 	};
 	$scope.fetchenroll = function(){
-		var query ={"enrollist": $scope.course.enrollist, "cname":$scope.course.name};
+		var query ={"enrollist": $scope.course.enrollist, "cname":$scope.course._id};
 		console.log(query);
 		$http.post('/getlist',query).success(function(response){
 			console.log(response);

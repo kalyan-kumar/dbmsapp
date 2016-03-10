@@ -1,0 +1,80 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'crypto.js' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 warn package.json starter-node-angular@ No description
+5 warn package.json starter-node-angular@ No repository field.
+6 warn package.json starter-node-angular@ No README data
+7 warn package.json fs@0.0.2 fs is also the name of a node core module.
+8 warn package.json fs@0.0.2 No description
+9 warn package.json fs@0.0.2 No repository field.
+10 warn package.json string_decoder@0.10.31 string_decoder is also the name of a node core module.
+11 verbose readDependencies using package.json deps
+12 verbose cache add [ 'crypto.js', null ]
+13 verbose cache add name=undefined spec="crypto.js" args=["crypto.js",null]
+14 verbose parsed url { protocol: null,
+14 verbose parsed url   slashes: null,
+14 verbose parsed url   auth: null,
+14 verbose parsed url   host: null,
+14 verbose parsed url   port: null,
+14 verbose parsed url   hostname: null,
+14 verbose parsed url   hash: null,
+14 verbose parsed url   search: null,
+14 verbose parsed url   query: null,
+14 verbose parsed url   pathname: 'crypto.js',
+14 verbose parsed url   path: 'crypto.js',
+14 verbose parsed url   href: 'crypto.js' }
+15 silly lockFile 6aa3531f-crypto-js crypto.js
+16 verbose lock crypto.js /home/riya/.npm/6aa3531f-crypto-js.lock
+17 silly lockFile 6aa3531f-crypto-js crypto.js
+18 silly lockFile 6aa3531f-crypto-js crypto.js
+19 verbose addNamed [ 'crypto.js', '' ]
+20 verbose addNamed [ null, '*' ]
+21 silly lockFile d4c3ae17-crypto-js crypto.js@
+22 verbose lock crypto.js@ /home/riya/.npm/d4c3ae17-crypto-js.lock
+23 silly addNameRange { name: 'crypto.js', range: '*', hasData: false }
+24 verbose request where is /crypto.js
+25 verbose request registry https://registry.npmjs.org/
+26 verbose request id f0f5407833a5f014
+27 verbose url raw /crypto.js
+28 verbose url resolving [ 'https://registry.npmjs.org/', './crypto.js' ]
+29 verbose url resolved https://registry.npmjs.org/crypto.js
+30 verbose request where is https://registry.npmjs.org/crypto.js
+31 info trying registry request attempt 1 at 03:31:08
+32 http GET https://registry.npmjs.org/crypto.js
+33 http 404 https://registry.npmjs.org/crypto.js
+34 silly registry.get cb [ 404,
+34 silly registry.get   { 'content-type': 'application/json',
+34 silly registry.get     'cache-control': 'max-age=0',
+34 silly registry.get     'content-length': '2',
+34 silly registry.get     'accept-ranges': 'bytes',
+34 silly registry.get     date: 'Wed, 09 Mar 2016 22:00:58 GMT',
+34 silly registry.get     via: '1.1 varnish',
+34 silly registry.get     age: '0',
+34 silly registry.get     connection: 'keep-alive',
+34 silly registry.get     'x-served-by': 'cache-sin6920-SIN',
+34 silly registry.get     'x-cache': 'MISS',
+34 silly registry.get     'x-cache-hits': '0',
+34 silly registry.get     'x-timer': 'S1457560857.939568,VS0,VE816' } ]
+35 silly lockFile d4c3ae17-crypto-js crypto.js@
+36 silly lockFile d4c3ae17-crypto-js crypto.js@
+37 error 404 Not Found
+37 error 404
+37 error 404 'crypto.js' is not in the npm registry.
+37 error 404 You should bug the author to publish it
+37 error 404 It was specified as a dependency of 'starter-node-angular'
+37 error 404
+37 error 404 Maybe try 'npm search crypto'
+37 error 404
+37 error 404 Note that you can also install from a
+37 error 404 tarball, folder, or http url, or git url.
+38 error System Linux 3.16.0-61-generic
+39 error command "/usr/local/bin/node" "/usr/local/bin/npm" "install" "crypto.js"
+40 error cwd /home/riya/Downloads/dbmsapp
+41 error node -v v0.10.33
+42 error npm -v 1.4.28
+43 error code E404
+44 verbose exit [ 1, true ]

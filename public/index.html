@@ -139,14 +139,14 @@
                 <div id="myModal3" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-body">
+                            <div class="modal-body" ng-controller="parentController">
                                 <form class="parent">
                                     <p class="title">Enter Your Ward's Information</p>
-                                    <input type="text" placeholder="Email ID" autofocus/>
+                                    <input type="text" ng-model="parent.email" placeholder="Email ID" autofocus/>
                                     <i class="fa fa-user"></i>
-                                    <input type="date" placeholder="Date Of Birth" autofocus/>
+                                    <input type="date" ng-model="parent.dob" placeholder="Date Of Birth" autofocus/>
                                     <i class="fa fa-user"></i>
-                                    <button>
+                                    <button ng-click="checkauth()">
                                     	<a href="#">
                                         	<i class="spinner"></i>
                                         	<span class="state">Sign Up</span>
