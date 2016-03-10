@@ -3,6 +3,7 @@ var app = angular.module('dbmsapp', []);
 app.controller ('mainController',['$scope', '$http','$window', '$log','$location', function($scope, $http, $window,$log,$location){
 	
 	var teacher={};
+	$scope.noticeteacher = [];
 	var encode = function(textString){
     var words = CryptoJS.enc.Utf8.parse(textString); // WordArray object
     var base64 = CryptoJS.enc.Base64.stringify(words); // string: 'SGVsbG8gd29ybGQ='
@@ -25,6 +26,9 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
 		$http.post('/tein', query).success(function(response){
             console.log(response);
             $scope.teacher=response;
+            for(i=0;i<response.courses.length;i++){
+            	$scope.noticeteacher.push({name:response.courses[i].name, numstud:response.courses[i].enrollist.length});	
+            }
 		});
 	}
 

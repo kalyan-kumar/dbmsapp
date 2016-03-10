@@ -126,34 +126,36 @@ exports.noticecourse=function(req,res,next)
 {	
 	var instance={};
 	modules.Course.find({'_id':req.body.ID},function(err,docs){
+		console.log("whats happening");
 		if (err) return handleError(err);
 		else
 		{
 			instance.assessmentlength=docs[0].assessments.length;
 			instance.name=docs[0].name;
+			instance.assignmentlength=docs[0].assignments.length;
+			console.log("whats this");
 			console.log(docs);
-
 			res.json(instance);
 		}
 	});
 }
 
-exports.noticecourse=function(req,res,next)
-{
-	var instance = {};
-	modules.Course.find({'_id':req.body.ID}, function(err,docs){
-		if (err) return handleError(err);
-		if(docs.length==0) {
-			res.send("failed");
-		} else if (docs.length > 1) {
-			res.send("failed");
-		} else {
-			instance.assessmentlength=docs[0].assessments.length;
-			instance.name=docs[0].name;
-			console.log(docs);
-		}
-	});
-};
+// exports.noticecourse=function(req,res,next)
+// {
+// 	var instance = {};
+// 	modules.Course.find({'_id':req.body.ID}, function(err,docs){
+// 		if (err) return handleError(err);
+// 		if(docs.length==0) {
+// 			res.send("failed");
+// 		} else if (docs.length > 1) {
+// 			res.send("failed");
+// 		} else {
+// 			instance.assessmentlength=docs[0].assessments.length;
+// 			instance.name=docs[0].name;
+// 			console.log(docs);
+// 		}
+// 	});
+// };
 exports.remcour=function(req,res,next)
 {	
 	// var instance={};

@@ -194,7 +194,7 @@ app.post('/regcour', indiv.regCour);
 app.post('/viewcour', indiv.viewCour);
 app.post('/makecour', indiv.makeCour);
 app.post('/updcour', updcour.makeChange);
-app.post('/noticecourse',updcour.noticecourse)
+app.post('/noticecourse',updcour.noticecourse);
 app.post('/dummyadd', updcour.addCour);
 app.post('/getteachcour', updcour.tagCour);
 app.post('/courname', login.courseName);

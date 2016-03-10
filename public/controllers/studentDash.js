@@ -28,23 +28,28 @@ app.controller('testController', ['$scope', '$http', '$window', '$log', '$locati
             console.log($scope.student);
             var i, j, x, y, instance, d = new Date();
 	    	for(i=0;i<$scope.student.courses.length;i++){
-	    		var query = {ID:$scope.student.courses[i]};
-	    		$http.post('/courname', query).success(function(response){
+	    		var query1 = {ID:$scope.student.courses[i]};
+	    		$http.post('/courname', query1).success(function(response){
 	    			console.log(response);
 	    			$scope.courseNames.push({_id:$scope.student.courses[i], name:response.name, prof:response.prof});
 	    			console.log($scope.courseNames);
 
 	    		});
-	    		$http.post('/courdate', query).success(function(response){
+	    		var query2 = {ID:$scope.student.courses[i]};
+	    		$http.post('/courdate', query2).success(function(response){
 	       			console.log(response);
-	       			var i;
-	       			for(i=0;i<response.length;i++)
-	       				$scope.calendar.push({cname:response[i].cname, type:response[i].type, title:response[i].title, when:response[i].when});
+	       			var j;
+	       			for(j=0;j<response.length;j++)
+	       				$scope.calendar.push({cname:response[j].cname, type:response[j].type, title:response[j].title, when:response[j].when});
 	       		});
-	    		for(i=0;i<$scope.student.courses.length;i++){
-		    		$http.post('/noticecourse', query).success(function(response){
+	       		var l=0;
+	       		console.log($scope.student.courses.length);
+	    		for(l=0;l<$scope.student.courses.length;l++){
+	    			console.log("YO");
+	    			var query3 = {ID:$scope.student.courses[i]};
+		    		$http.post('/noticecourse', query3).success(function(response){
 		    			console.log(response);
-		    			$scope.noticearray.push({ quizlen:response.assessmentlength,name:response.name});
+		    			$scope.noticearray.push({ quizlen:response.assessmentlength,name:response.name, asslen:response.assignmentlength});
 		    		});
 	    		}
 	    	}
