@@ -68,10 +68,11 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
             $scope.student=response.student;
             studentemail = response.student.mail;
             $scope.course=response.course;
-            assignm = $scope.course.assignments;           
+            assignm = $scope.course.assignments; 
+                console.log(assignm);
+          
         });
     console.log("fmo");
-    console.log(assignm);
      console.log("fmo");
 	}
   var assesslist=[];
