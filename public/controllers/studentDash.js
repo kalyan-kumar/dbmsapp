@@ -39,7 +39,8 @@ app.controller('testController', ['$scope', '$http', '$window', '$log', '$locati
 	    		$http.post('/courname', query).success(function(response){
 	    			console.log(response);
 	    			$scope.courseNames.push({_id:$scope.student.courses[i], name:response.name, prof:response.prof});
-	    			// console.log($scope.courseNames);
+	    			console.log($scope.courseNames);
+
 	    		});
 	    		$http.post('/courdate', query).success(function(response){
 	       			

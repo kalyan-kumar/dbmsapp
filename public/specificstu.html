@@ -42,7 +42,7 @@
       <![endif]-->
     </head>
 
-    <body ng-controller="mainController" ng-init="init()">
+    <body ng-controller="mainController" ng-init="init()" id="divID">
       <!-- container section start -->
       <section id="container" class="">
         <header class="header dark-bg">
@@ -175,7 +175,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row">
+                   <div class="row">
                     <div class="col-md-12"  id="ass">
 
                       <div class="panel panel-default">
@@ -189,9 +189,9 @@
                               <tr>
                                 <th scope="row" width="20%">Assignment1</th>
                                 <td width="40%;">
-                                  <!-- <form onsubmit="download('ass.txt', '{{assignment}}')" >
+                                  <form onsubmit="download('ass.txt',assigntxt)" >
                                     <input type="submit" value="Assignment" class="upload">
-                                  </form> -->
+                                  </form>
                                 <!--   <button type="file" ngf-select="uploadFiles($file, $invalidFiles)"
                                   accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
                                   Select File</button>
@@ -203,8 +203,8 @@
                                       ng-bind="f.progress + '%'"></div>
                                     </span>
                                   </div>  --> 
-                                     <input type = "file" file-model = "myFile"/>
-                                    <button ng-click = "uploadFile()">upload me</button>
+                                    <!--  <input type = "file" file-model = "myFile"/>
+                                    <button ng-click = "uploadFile()">upload me</button> -->
                                 </td>
                                 <form>
                                   <td style="text-align: center;">
@@ -371,10 +371,13 @@
         }
       }
 
-      function receivedText() {
-        console.log(fr.result);
-  //   document.getElementById('editor').appendChild(document.createTextNode(fr.result));
-} 
+      
+function receivedText() {
+          console.log(fr.result);
+           angular.element(document.getElementById('divID')).scope().TestAngularMethod(fr.result);
+
+    //   document.getElementById('editor').appendChild(document.createTextNode(fr.result));
+  } 
       //knob
       //custom select box
       function download(filename, text) {
