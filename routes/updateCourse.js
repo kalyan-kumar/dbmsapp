@@ -109,8 +109,65 @@ exports.addassessment = function (req, res, next)
 	
 }
 
+exports.noticecourse=function(req,res,next)
+{	
+	var instance={};
+	modules.Course.find({'_id':req.body.ID},function(err,docs){
+		if (err) return handleError(err);
+		else
+		{
+			instance.assessmentlength=docs[0].assessments.length;
+			instance.name=docs[0].name;
+			console.log(docs);
+
+			res.json(instance);
+		}
 
 
+	});
+};
+exports.remcour=function(req,res,next)
+{	
+	// var instance={};
+	modules.Course.findOne({'_id':req.body.ID},function(err,docs){
+		if (err) return handleError(err);
+		else
+		{
+			
+			modules.Course.remove(docs);
+			modules.Course.save(callback(err));
+			res.send("removed");
+		}
+
+
+	});
+};
+
+exports.sendmail=function(req, res) {
+  var data = {
+    from: req.body.name + '<' + req.body.sendermail + '>',
+    to: req.body.email,
+    subject: req.body.subject,
+    text: req.body.text
+  };
+
+  mailgun.messages().send(data)
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+exports.addassignment=function(req, res, next)
+{
+	modules.Course.findOneAndUpdate({'_id':req.body.ID}, {$push:{"assignments":req.body.assignment}}, function(err, model)
+	{
+		if(err)
+		{
+			console.log("why god why?");
+			return handleError(err);
+		} 
+		console.log("adding it ");
+		res.send("success");
+	});	
+}
 
 exports.tagCour = function (req, res, next) {
 	console.log("Tagging Course");

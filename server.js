@@ -34,6 +34,11 @@ db.on('error', function (err) {
 db.once('open', function () {
 	console.log('Connected to mongo server');
 });
+var mailgun = require('mailgun-js')({
+  apiKey: "a18379a3156e7e111ed6458409ffbb46",
+  domain: "sandbox8ff9ab0b589f41269897c09d8f728835.mailgun.org",
+  proxy: "http://10.3.100.207:8080"
+});
 
 var storage = multer.diskStorage({
 	destination: function(req, file, cb) {
@@ -182,12 +187,15 @@ app.post('/adaccept', login.acceptit);
 app.post('/adreject', login.rejectit);
 app.post('/assessment', updcour.addassessment);
 app.post('/getassessment', indiv.getassessment);
+app.post('/assignment', updcour.addassignment);
+app.post('/remcour', updcour.remcour);
 
 app.post('/profile', login.loadData);
 app.post('/regcour', indiv.regCour);
 app.post('/viewcour', indiv.viewCour);
 app.post('/makecour', indiv.makeCour);
 app.post('/updcour', updcour.makeChange);
+app.post('/noticecourse',updcour.noticecourse)
 app.post('/dummyadd', updcour.addCour);
 app.post('/getteachcour', updcour.tagCour);
 app.post('/courname', login.courseName);

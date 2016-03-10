@@ -105,7 +105,7 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
  };
    $scope.nextform = function() {
     console.log($scope.optionRadios);
-    if ($scope.optionRadios==assesslist[i].key){
+    if ($scope.optionRadios+1==assesslist[i].key){
       score=score+1;
     }
     i=i+1;

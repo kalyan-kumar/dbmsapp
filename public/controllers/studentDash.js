@@ -37,6 +37,7 @@ app.controller('testController', ['$scope', '$http', '$window', '$log', '$locati
 	    		var query = {ID:$scope.student.courses[i]};
 	    		$http.post('/courname', query).success(function(response){
 	    			$scope.courseNames.push({_id:$scope.student.courses[i], name:response.name, prof:response.prof});
+	    			console.log($scope.courseNames);
 	    		});
 	    	}
 	       	var now = d.getTime();
