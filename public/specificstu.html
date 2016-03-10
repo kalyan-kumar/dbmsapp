@@ -187,10 +187,10 @@
                           <table class="table">
                             <tbody>
                               <tr>
-                                <th scope="row" width="20%">Assignment {{$index +1}}</th>
+                                <th scope="row" width="20%">Assignment {{$index +1}}(Deadline:{{ass.deadline}})</th>
                                 <td width="40%;">
                                   <form ng-click="dloadfile($index)" onsubmit="download('ass.txt',assigntxt)" >
-                                    <input type="submit" value="Assignment" class="upload">
+                                    <input type="submit" value="Download" class="upload">
                                   </form>
                                 <!--   <button type="file" ngf-select="uploadFiles($file, $invalidFiles)"
                                   accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
@@ -212,7 +212,7 @@
                                     <input type="file" value="Upload Assignment" name="datafile" size="40" id="fileinput" class = "upload">
                                   </td>
                                   <td class = "upload" width="30%;" style="text-align: right;">
-                                    <input type="submit" value="Submit Assignment" onclick="handleFileSelect()" class = "upload">
+                                    <input type="submit" id="bigass" value="Submit Assignment" onclick="handleFileSelect()" class = "upload">
                                   </td>
                                 </form>
                               </tr>
@@ -368,6 +368,7 @@
       fr.readAsText(file);
           // if(fr.readyState == 2)
           //   console.log(fr.result);
+          document.getElementById('bigass').style.visibility = 'hidden';
         }
       }
 
