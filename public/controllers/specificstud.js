@@ -48,7 +48,15 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
     console.log(textString);
     return textString;
   }
+  $scope.dloadfile = function(id){
+    assigntxt="wefdfvdabfl";
+  }
+   $scope.TestAngularMethod = function(text){
+    console.log(text);
+  }
+   assignm=[]
 	$scope.init = function() {
+   // $scope.assigntxt="wwww";
     var sub = $location.absUrl().substr($location.absUrl().lastIndexOf('?')+1);
     var textString = decode(sub);
 		var url=textString.substring(textString.lastIndexOf('=')+1,textString.lastIndexOf('?'));
@@ -59,8 +67,12 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
             console.log(response);
             $scope.student=response.student;
             studentemail = response.student.mail;
-            $scope.course=response.course;           
+            $scope.course=response.course;
+            assignm = $scope.course.assignments;           
         });
+    console.log("fmo");
+    console.log(assignm);
+     console.log("fmo");
 	}
   var assesslist=[];
   $scope.openthis=function($index)
@@ -84,15 +96,6 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
 		var url="/courses.html?"+base64;
         $window.location.href = url;
     };
-    $scope.uploadFile = function(){
-     var file = $scope.myFile;
-
-     console.log('file is ' );
-     console.dir(file);
-
-     var uploadUrl = "/files";
-     fileUpload.uploadFileToUrl(file, uploadUrl);
- };
  $scope.mailfac = function(){
   var data={};
   // var data = {

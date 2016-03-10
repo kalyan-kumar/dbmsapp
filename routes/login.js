@@ -151,7 +151,7 @@ exports.courseDate = function(req, res, next) {
 		} else if(docs.length > 1) {
 			console.log("You fucked up while registering users. Seriously Kalyan? -_-");
 		} else {
-			var i, tmp;
+			var i, tmp = {};
 			for(i=0;i<docs[0].assignments.length;i++){
 				tmp.cname = docs[0].name;
 				tmp.type = "Assignment";

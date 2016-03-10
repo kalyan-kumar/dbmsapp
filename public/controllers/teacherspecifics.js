@@ -42,7 +42,6 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
     console.log("here");
     console.log(i);
   };
-
   	$scope.updateassignments=function(assignment)
   	{
   		var query={'assignment':assignment,'ID':$scope.course._id};

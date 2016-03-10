@@ -4,13 +4,7 @@ app.controller('testController', ['$scope', '$http', '$window', '$log', '$locati
 	var url = $location.absUrl();
 	var student = {};
 	$scope.courseNames = [];
-	var calendar = [{
-		type: String,
-		name: String,
-		ofcour: String,
-		attime: Date,
-		status: Boolean
-	}];
+	$scope.calendar = [];
 	$scope.noticearray = [];
 	var encode = function(textString){
 		console.log(textString);
@@ -44,7 +38,9 @@ app.controller('testController', ['$scope', '$http', '$window', '$log', '$locati
 	    		});
 	    		$http.post('/courdate', query).success(function(response){
 	       			console.log(response);
-	       			$scope.calendar.push({cname:response.cname});
+	       			var i;
+	       			for(i=0;i<response.length;i++)
+	       				$scope.calendar.push({cname:response[i].cname, type:response[i].type, title:response[i].title, when:response[i].when});
 	       		});
 	    		for(i=0;i<$scope.student.courses.length;i++){
 		    		$http.post('/noticecourse', query).success(function(response){
