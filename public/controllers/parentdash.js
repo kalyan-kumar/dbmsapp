@@ -2,14 +2,14 @@ var app = angular.module('dbmsapp', []);
 app.controller ('ParentController',['$scope', '$http','$window', '$log','$location', function($scope, $http, $window,$log,$location){
 	var type="";
 	$scope.init = function() {
-		// var url=$location.absUrl().substring($location.absUrl().lastIndexOf('=')+1,$location.absUrl().lastIndexOf('?'));
-		// type=$location.absUrl().substr($location.absUrl().lastIndexOf('~')+1);
-		// console.log(type);
-		// var query={'email':url};
-		// $http.post('/profile', query).success(function(response){
-		// 	console.log(response);
-		// 	$scope.get=response;
-		// });
+		var url=$location.absUrl().substring($location.absUrl().lastIndexOf('=')+1,$location.absUrl().lastIndexOf('?'));
+		type=$location.absUrl().substr($location.absUrl().lastIndexOf('~')+1);
+		console.log(type);
+		var query={'email':url};
+		$http.post('/profile', query).success(function(response){
+			console.log(response);
+			$scope.get=response;
+		});
 
 	}
 	var tmp ={

@@ -91,14 +91,16 @@ app.controller('signController', ['$scope', '$http', '$log', '$window', '$locati
 
 app.controller("parentController",['$scope', '$http', '$log', '$window', '$location', function($scope, $http, $log, $window, $location){
     this.user={};
-    console
-    this.checkauth=function(user){
+    $scope.checkauth=function(user){
         console.log("here");
         var query = {"email":$scope.parent.email, "dob": $scope.parent.dob};
-        $http.post('/parentcheck', query).success(function(response){
-            console.log(response);
-            if(response=="success")
+        $http.post('/parentcheck', query).success(function(responses){
+            console.log(responses);
+            if(responses=="success")
+            {
+                console.log("here");
                 $window.location.href = "/parentdash.html?email="+$scope.parent.email;
+            }
         });
     }
 }]);

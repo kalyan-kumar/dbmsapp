@@ -227,8 +227,13 @@ exports.loadTData = function(req, res, next) {
 exports.parent=function(req,res)
 {
 	modules.Student.findOne({'mail':req.body.email},function(err,docs){
-		if(docs.dob==req.body.dob)
+		if(docs==null)
+		{
+			res.send("no match");
+		}
+		else
+		{
 			res.send("success");
-		res.send("no match");
+		}
 	})
 };
