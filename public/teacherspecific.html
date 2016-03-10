@@ -205,7 +205,7 @@
 
                         <div class="panel panel-default">
                           <div class="panel-heading">
-                            <h2><i class="fa fa-map-marker red"></i><strong>Update Assignments</strong></h2>
+                            <h2><i class="fa fa-map-marker red"></i><strong>Add Assignments</strong></h2>
                           </div>
                           <div class="panel-body-map" id="textbox" style="padding: 20px;height: auto;">
                             <form class="updateteach" >
@@ -221,6 +221,56 @@
                         </div>
                       </div>
                     </div>
+
+                    <div class="row">
+                    <div class="col-md-12"  id="submission">
+
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h2><i class="fa fa-map-marker red"></i><strong>Check Submissions</strong></h2>
+                        </div>
+                        <div class="panel-body-map" id="textbox" style="padding: 20px;height: auto;">
+                          <p><button type="button" class="btn btn-primary" style="background-color: #2196F3" data-toggle="modal" data-target="#myModal" ng-click="fetchenroll()">Assignment 1</button></p>
+                          <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content" style="max-height: 500px; overflow-y: hidden;">
+                                <div class="modal-body">
+                                  <table class="table" width="100%">
+                                    <tbody>
+                                    <tr>
+                                      <th>Student Name</th>
+                                      <th>Submission</th>
+                                    </tr>
+                                      <tr>
+                                      <td>
+                                        {{studname}}
+                                      </td>
+                                        <td>
+                                          <form onsubmit="download('ass.txt',studass)" >
+                                            <input type="submit" value="Assignment" class="upload">
+                                          </form>
+                                        </td>
+                                        <!-- <form role="form">
+                                          <td width="40%" style="float: center">
+                                            <input type="number" min = "0" max ="10" value="marks" placeholder="Enter Grades" width="20"></input>
+                                          </td>
+                                          <td style="float: right;">
+                                            <a href="#" class="btn btn-primary " role="button">Submit</a>
+                                          </td>
+                                        </form> -->
+
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                   <div class="row">
                     <div class="col-md-12"  id="self">
 
@@ -326,12 +376,12 @@
                        <form class="addcourse">
                           <p class="title">Are you sure you want to delete?</p>
                           <div style="text-align: center;">
-                          <label><input type="radio" value="yes" name="sure" >Yes</label>
+                          <label><input type="radio" ng-model="remval" value="yes" name="sure" >Yes</label>
                           <!-- <i class="fa fa-user"></i> -->&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                          <label><input type="radio" value="no" name="sure" >No</label>
+                          <label><input type="radio" ng-model="remval" value="no" name="sure" >No</label>
                           <!-- <i class="fa fa-user"></i> -->
                           </div>
-                          <button>
+                          <button ng-click="remcourse()">
                             <!-- <i class="spinner"></i> -->
                             <span class="state">Submit</span>
                           </button>

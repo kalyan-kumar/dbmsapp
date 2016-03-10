@@ -189,7 +189,6 @@ app.post('/assessment', updcour.addassessment);
 app.post('/getassessment', indiv.getassessment);
 app.post('/assignment', updcour.addassignment);
 app.post('/remcour', updcour.remcour);
-
 app.post('/profile', login.loadData);
 app.post('/regcour', indiv.regCour);
 app.post('/viewcour', indiv.viewCour);
@@ -200,6 +199,8 @@ app.post('/dummyadd', updcour.addCour);
 app.post('/getteachcour', updcour.tagCour);
 app.post('/courname', login.courseName);
 app.post('/courdate', login.courseDate);
+app.post('/contactform', updcour.sendmail);
+app.post('/getlist', indiv.getlist);
 
 app.post('/files', submit.savefile);
 /*

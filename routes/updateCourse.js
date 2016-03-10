@@ -170,7 +170,6 @@ exports.remcour=function(req,res,next)
 	});
 };
 
-
 exports.sendmail=function(req, res) {
   var data = {
     from: req.body.name + '<' + req.body.sendermail + '>',
@@ -196,7 +195,6 @@ exports.addassignment=function(req, res, next)
 		res.send("success");
 	});	
 }
-
 
 exports.tagCour = function (req, res, next) {
 	console.log("Tagging Course");

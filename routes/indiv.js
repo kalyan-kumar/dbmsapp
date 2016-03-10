@@ -33,6 +33,10 @@ exports.regCour = function(req, res, next){
 		}	
 	});
 };
+// exports.getlist=function(req,res)
+// {
+// 	modules.Course.findOne({})
+// }
 exports.add_question = function(req, res, next) {
 	try{
 		var quiz = new quiz_collection({

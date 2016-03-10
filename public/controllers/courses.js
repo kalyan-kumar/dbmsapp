@@ -82,4 +82,14 @@ app.controller('CourseList', ['$scope', '$http', '$window', '$log', '$location',
             return false;
         }
     }
+    $scope.checkenroll=function(id){
+        var i;
+        console.log(id);
+        for(i=0;i<$scope.student.courses.length;i++)
+        {
+            if($scope.student.courses[i]._id == id)
+                return true;
+        }
+        return false;
+    }
 }]);
