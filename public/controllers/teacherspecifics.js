@@ -125,11 +125,15 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
 			});
 		}
 	};
-	$scope.fetchenroll = function(){
-		var query ={"enrollist": $scope.course.enrollist, "cname":$scope.course.name};
+	$scope.fetchenroll = function(ind){
+		var query ={"enrollist": $scope.course.enrollist, "cname":$scope.course._id, "index":ind};
 		console.log(query);
 		$http.post('/getlist',query).success(function(response){
 			console.log(response);
+			$scope.checkthese = response;
 		});
 	};
+	$scope.getthefile = function(ind){
+		studass = checkthese[ind].submit;
+	}
 }]);

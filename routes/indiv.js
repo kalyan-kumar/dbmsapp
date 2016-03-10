@@ -117,6 +117,7 @@ exports.makeCour = function(req, res, next){
 
 exports.getlist = function(req, res, next) {
 	var i, instance=[];
+	console.log(req.body.enrollist[0]);
 	for(i=0;i<req.body.enrollist.length;i++){
 		modules.Student.find({'_id':req.body.enrollist[i]}, function(err, docs) {
 			if (err) return handleError(err);
