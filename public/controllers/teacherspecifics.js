@@ -42,6 +42,7 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
     console.log("here");
     console.log(i);
   };
+<<<<<<< HEAD
 
   	$scope.updateassignments=function(assignment)
   	{
@@ -51,13 +52,15 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
 		});
 
   	}
+=======
+>>>>>>> 4d42365451cd17abac09d755fc876de1573c58cd
 	$scope.add=function(assessment)
 	{
 		// console.log(assignment);
 		// assessment.question=assignment;
 		assessments.push(assessment);
 		assessment={};
-		$scope.assessment={};
+		// $scope.assessment={};
 		console.log(assessments);
 		$scope.assessment = {};
 	};

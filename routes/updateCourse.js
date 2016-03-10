@@ -123,6 +123,18 @@ exports.noticecourse=function(req,res,next)
 			res.json(instance);
 		}
 
+exports.noticecourse=function(req,res,next)
+{
+	var instance = {};
+	modules.Course.find({'_id':req.body.ID},function(err,docs){
+		if (err) return handleError(err);
+		else
+		{
+			console.log(docs);
+			instance.assessmentlength=docs[0].assessments.length;
+			instance.name=docs[0].name;
+			console.log(docs);
+
 
 	});
 };
@@ -137,11 +149,13 @@ exports.remcour=function(req,res,next)
 			modules.Course.remove(docs);
 			modules.Course.save(callback(err));
 			res.send("removed");
+
 		}
 
 
 	});
 };
+
 
 exports.sendmail=function(req, res) {
   var data = {
@@ -168,6 +182,7 @@ exports.addassignment=function(req, res, next)
 		res.send("success");
 	});	
 }
+
 
 exports.tagCour = function (req, res, next) {
 	console.log("Tagging Course");

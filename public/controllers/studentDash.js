@@ -11,6 +11,7 @@ app.controller('testController', ['$scope', '$http', '$window', '$log', '$locati
 		attime: Date,
 		status: Boolean
 	}];
+	$scope.noticearray = [];
 	var encode = function(textString){
 		console.log(textString);
 	    var words = CryptoJS.enc.Utf8.parse(textString); // WordArray object
@@ -38,8 +39,20 @@ app.controller('testController', ['$scope', '$http', '$window', '$log', '$locati
 	    		$http.post('/courname', query).success(function(response){
 	    			$scope.courseNames.push({_id:$scope.student.courses[i], name:response.name, prof:response.prof});
 	    			console.log($scope.courseNames);
+
 	    		});
+	    		for(i=0;i<$scope.student.courses.length;i++){
+		    		var query = {ID:$scope.student.courses[i]};
+		    		$http.post('/noticecourse', query).success(function(response){
+		    			console.log(response);
+		    			$scope.noticearray.push({ quizlen:response.assessmentlength,name:response.name});
+		    			// $scope.courseNames.push({_id:$scope.student.courses[i], name:response.name, prof:response.prof});
+		    			// console.log($scope.courseNames);
+		    			// asslen:response.assignments.length,
+		    		});
+	    		}
 	    	}
+	    	
 	       	var now = d.getTime();
 	       	x = $scope.student.courses.length;
 	        /*for(i=0;i<x;i++) {
