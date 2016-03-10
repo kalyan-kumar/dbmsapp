@@ -175,21 +175,21 @@
                       </div>
                     </div>
                   </div>
-                   <div class="row">
+                  <div class="row">
                     <div class="col-md-12"  id="ass">
 
                       <div class="panel panel-default">
                         <div class="panel-heading">
                           <h2><i class="fa fa-map-marker red"></i><strong>Assignments</strong></h2>
                         </div>
-                        <div class="panel-body-map" id="textbox" style="padding: 20px;height: auto;" ng-repeat="ass in assignm">
+                        <div class="panel-body-map" id="textbox" style="padding: 20px;height: auto;" >
                           <!-- <p></p> -->
                           <table class="table">
                             <tbody>
                               <tr>
-                                <th scope="row" width="20%">Assignment {{$index +1}}</th>
+                                <th scope="row" width="20%">Assignment1</th>
                                 <td width="40%;">
-                                  <form ng-click="dloadfile($index)" onsubmit="download('ass.txt',assigntxt)" >
+                                  <form onsubmit="download('ass.txt',assigntxt)" >
                                     <input type="submit" value="Assignment" class="upload">
                                   </form>
                                 <!--   <button type="file" ngf-select="uploadFiles($file, $invalidFiles)"
@@ -222,7 +222,7 @@
                       </div>
                     </div>
                   </div>
-                  <div  class="row">
+                  <div class="row">
                     <div class="col-md-12"  id="self">
 
                       <div class="panel panel-default">
@@ -231,64 +231,7 @@
                         </div>
                         <div class="panel-body-map" id="textbox" style="padding: 20px;height: auto;">
                           <p>{{assignment}}</p>
-                          <p ng-repeat="assessment in course.assessments" ><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" ng-click="openthis($index)">Quiz {{$index +1}}</button>
-                          <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <!-- <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-body">
-                  <div id="container"> -->
-                    <div class="row clearfix">
-                    </div>
-                    <div class="col-md-1 column">
-                    </div>
-                    <div class="col-md-10 column">
-                      <p class="lead">Progress 40%</p>
-                      <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 40%;">
-                          <span class="sr-only">Progress 40%</span>
-                        </div>
-                      </div>
-                      <div class="panel panel-primary">
-                        <div class="panel-heading">
-                          <h3  class="panel-title">
-                            {{question.qname}}
-                          </h3>
-                        </div>
-                        <div class="panel-body">
-                          <div class="radio">
-                            <label>
-                              <input type="radio" name="optionsRadios" id="optionsRadios1" ng-model="optionRadios" value="0"  checked="">{{question.optionA}}
-                            </label>
-                          </div>
-                          <div class="radio">
-                            <label>
-                              <input type="radio" name="optionsRadios" id="optionsRadios2" ng-model="optionRadios" value="1" > {{question.optionB}}
-                            </label>
-                          </div>
-                          <div class="radio">
-                            <label>
-                              <input type="radio" name="optionsRadios" id="optionsRadios3" ng-model="optionRadios" value="2" > {{question.optionC}}
-                            </label>
-                          </div>
-                          <div class="radio">
-                            <label>
-                              <input type="radio" name="optionsRadios" id="optionsRadios4" ng-model="optionRadios" value="3" > {{question.optionD}}
-                            </label>
-                          </div>
-
-                        </div>
-                        <div class="panel-footer">
-                          <a href="#" class="btn btn-primary " ng-click="nextform()" role="button">Submit</a>
-                        </div>
-                      </div>
-                      <div class="col-md-1 column">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                          
-
-                          </p>
+                          <p><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Quiz {{$index+1}}</button></p>
                         </div>
                       </div>
                     </div>
@@ -324,7 +267,61 @@
 
           </div>  
           <!-- project team & activity end -->
-                       <!--  </div>
+          <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <!-- <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div id="container"> -->
+                    <div class="row clearfix">
+                    </div>
+                    <div class="col-md-1 column">
+                    </div>
+                    <div class="col-md-10 column">
+                      <p class="lead">Progress 40%</p>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 40%;">
+                          <span class="sr-only">Progress 40%</span>
+                        </div>
+                      </div>
+                      <div class="panel panel-primary">
+                        <div class="panel-heading">
+                          <h3 class="panel-title">
+                            Question 1
+                          </h3>
+                        </div>
+                        <div class="panel-body">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""> Questa è la risposta uno. Fossi in te, la lascerei perdere
+                            </label>
+                          </div>
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Forse la due si avvicina... ma non ci giurerei
+                            </label>
+                          </div>
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3"> Opzione tre — da' retta, è questa
+                            </label>
+                          </div>
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4"> Sulla risposta quattro non ci metterei la mano sul fuoco...
+                            </label>
+                          </div>
+
+                        </div>
+                        <div class="panel-footer">
+                          <a href="#" class="btn btn-primary " role="button">Submit</a>
+                        </div>
+                      </div>
+                      <div class="col-md-1 column">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+             <!--  </div>
             </div>
           </div> -->
         </section>
@@ -366,13 +363,13 @@
           fr.onload = receivedText;
       //fr.readAsText(file);
       fr.readAsText(file);
+     
           // if(fr.readyState == 2)
           //   console.log(fr.result);
         }
       }
 
-      
-function receivedText() {
+        function receivedText() {
           console.log(fr.result);
            angular.element(document.getElementById('divID')).scope().TestAngularMethod(fr.result);
 

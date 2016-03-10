@@ -38,17 +38,25 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
     // $scope.user = angular.copy($scope.master);
     var ass={}
     ass = quiz;
-    $scope.add(ass);
+    $scope.add(quiz);
     console.log("here");
     console.log(i);
   };
-	$scope.add=function(ass)
+  	$scope.updateassignments=function(assignment)
+  	{
+  		var query={'assignment':assignment,'ID':$scope.course._id};
+  		$http.post('/assignment',query).success(function(response){
+			console.log(response);
+		});
+
+  	}
+	$scope.add=function(assessment)
 	{
 		// console.log(assignment);
-		assessment.question=assignment;
+		// assessment.question=assignment;
 		assessments.push(assessment);
 		assessment={};
-		$scope.assessment={};
+		// $scope.assessment={};
 		console.log(assessments);
 		$scope.assessment = {};
 	};
@@ -63,6 +71,7 @@ app.controller ('mainController',['$scope', '$http','$window', '$log','$location
 		$http.post('/assessment',query).success(function(response){
 			console.log(response);
 		});
+		assessments=[];
 	};
 	$scope.goHome = function() {
 		var base64 = encode("email="+$scope.teacher.mail);

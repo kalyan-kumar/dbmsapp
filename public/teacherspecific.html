@@ -209,8 +209,9 @@
                           </div>
                           <div class="panel-body-map" id="textbox" style="padding: 20px;height: auto;">
                             <form class="updateteach" >
-                             <TEXTAREA NAME="HARD" COLS="100" ROWS="5" WRAP="HARD" ng-model="course.assignments" >{{course.assignments}}</TEXTAREA>
-                            <button ng-click="updateassignments()">
+                             <TEXTAREA NAME="HARD" COLS="100" ROWS="5" WRAP="HARD" ng-model="assignment.statement" ></TEXTAREA>
+                             <input type="date" name="deadline" min="2016-03-03" style="width: 180px"ng-model="assignment.deadline"><br>
+                            <button ng-click="updateassignments(assignment)">
                               <a href="#">
                                 <!-- <i class="spinner"></i> -->
                                 <span class="state">Update</span></a>
@@ -230,10 +231,10 @@
                         <div class="panel-body-map" id="textbox" style="padding: 20px;height: auto;">
                           <form class="updateteach" >
                             <p><TEXTAREA NAME="HARD" COLS="100" ROWS="1" WRAP="HARD" ng-model="assessment.qname" placeholder="Enter Question"></TEXTAREA></p>
-                            <p><TEXTAREA NAME="HARD" ROWS="1" ng-model="assessment.optA" placeholder="Option A"></TEXTAREA>
-                              <TEXTAREA NAME="HARD" ROWS="1" ng-model="assessment.optB" placeholder="Option B"></TEXTAREA>
-                              <TEXTAREA NAME="HARD" ROWS="1" ng-model="assessment.optC" placeholder="Option C"></TEXTAREA>
-                              <TEXTAREA NAME="HARD" ROWS="1" ng-model="assessment.optD" placeholder="Option D"></TEXTAREA>
+                            <p><TEXTAREA NAME="HARD" ROWS="1" ng-model="assessment.optionA" placeholder="Option A"></TEXTAREA>
+                              <TEXTAREA NAME="HARD" ROWS="1" ng-model="assessment.optionB" placeholder="Option B"></TEXTAREA>
+                              <TEXTAREA NAME="HARD" ROWS="1" ng-model="assessment.optionC" placeholder="Option C"></TEXTAREA>
+                              <TEXTAREA NAME="HARD" ROWS="1" ng-model="assessment.optionD" placeholder="Option D"></TEXTAREA>
                               <input NAME="HARD" type="number" ng-model="assessment.key" placeholder="Enter Correct Option" max="4" min="1">
                             </p>
                             <!-- <input type="text" placeholder="Enter Question"></input>
