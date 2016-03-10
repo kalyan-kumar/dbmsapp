@@ -187,10 +187,10 @@
                           <table class="table">
                             <tbody>
                               <tr>
-                                <th scope="row" width="20%">Assignment {{$index +1}}</th>
+                                <th scope="row" width="20%">Assignment {{$index +1}}(Deadline:{{ass.deadline}})</th>
                                 <td width="40%;">
                                   <form ng-click="dloadfile($index)" onsubmit="download('ass.txt',assigntxt)" >
-                                    <input type="submit" value="Assignment" class="upload">
+                                    <input type="submit" value="Download" class="upload">
                                   </form>
                                 <!--   <button type="file" ngf-select="uploadFiles($file, $invalidFiles)"
                                   accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
