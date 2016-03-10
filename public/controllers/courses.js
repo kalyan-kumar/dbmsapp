@@ -37,8 +37,19 @@ app.controller('CourseList', ['$scope', '$http', '$window', '$log', '$location',
         });
 
         $http.post('/viewcour').success(function(response) {
+            console.log(response);
             $scope.courselist=response;
         });
+    }
+
+    $scope.checkenroll=function(id){
+        var i;
+        for(i=0;i<$scope.student.courses.length;i++)
+        {
+            if($scope.student.courses[i] == id)
+                return true;
+        }
+        return false;
     }
 
    $scope.goHome = function() {

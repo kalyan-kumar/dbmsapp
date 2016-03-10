@@ -13,7 +13,6 @@ app.controller('testController', ['$scope', '$http', '$window', '$log', '$locati
 	    console.log(base64);
 	    return base64;
 	}
-
 	var decode = function(base64){
 		var words = CryptoJS.enc.Base64.parse(base64);
 	    var textString = CryptoJS.enc.Utf8.stringify(words); // 'Hello world'
@@ -27,7 +26,7 @@ app.controller('testController', ['$scope', '$http', '$window', '$log', '$locati
 		$http.post('/sstin', query).success(function(response){
             $scope.student = response;
             console.log($scope.student);
-            var i, j, x, y, instance;
+            var i, j, x, y, instance, d = new Date();
 	    	for(i=0;i<$scope.student.courses.length;i++){
 	    		var query = {ID:$scope.student.courses[i]};
 	    		$http.post('/courname', query).success(function(response){
@@ -46,42 +45,13 @@ app.controller('testController', ['$scope', '$http', '$window', '$log', '$locati
 		    		$http.post('/noticecourse', query).success(function(response){
 		    			console.log(response);
 		    			$scope.noticearray.push({ quizlen:response.assessmentlength,name:response.name});
-		    			// $scope.courseNames.push({_id:$scope.student.courses[i], name:response.name, prof:response.prof});
-		    			// console.log($scope.courseNames);
-		    			// asslen:response.assignments.length,
 		    		});
 	    		}
 	    	}
-	    	
-	       	// var now = Date().getTime();
-	       	x = $scope.student.courses.length;
-
-
-
-
-	        /*for(i=0;i<x;i++) {
-	        	y = $scope.student.courses[i].lectures.length;
-	        	for(j=0;j<y;j++){
-	        		instance.type = "Lecture";
-	        		instance.name = "Lecture " + $scope.student.courses[i].lectures[j].id;
-	        		instance.ofcour = $scope.student.courses[i].name,
-	        		instance.attime = $scope.student.courses[i].lectures[j].start;
-	        		instance.status = now > $scope.student.courses[i].lectures[j].start;
-	        		calendar.push(instance);
-	        	}
-	        }
-	        x = $scope.student.submissions.length;
-	        for(i=0;i<x;i++){
-	        	instance.type = "Submission";
-	        	instance.name = $scope.student.submissions[i].asstitle;
-	        	instance.ofcour = $scope.student.submissions[i].ofcour;
-	        	instance.attime = $scope.student.submissions[i].maxtime;
-	        	instance.status = now > $scope.student.submissions[i].subtime;
-	        	calendar.push(instance);
-	        }
-	        calendar.sort(function(a, b){
+	       	var now = d.getTime();
+	        $scope.calendar.sort(function(a, b){
 	        	return new Date(a.attime) - new Date(b.attime);
-	        });*/
+	        });
         });
 	};
 	$scope.viewCourses = function() {
@@ -89,7 +59,6 @@ app.controller('testController', ['$scope', '$http', '$window', '$log', '$locati
 		var url="/courses.html?"+base64;
 		$window.location.href = url;
 	};
-
 	$scope.goHome = function() {
 		var base64 = encode("email="+$scope.student.mail);
 		var url="/studentdash.html?"+base64;

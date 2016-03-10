@@ -217,7 +217,7 @@
                                         <td style="vertical-align: middle;">{{course.fees}}</td>
                                         <td style="vertical-align: middle;">{{course.instr}}</td>
                                         <td style="vertical-align: middle;">{{course.contact}}</td>
-                                        <td style="vertical-align: middle;"><button type="button" class="btn btn-info active" style="padding-top: 5px; padding-bottom: 5px;" data-toggle="modal" data-target="#myModal" ng-disable="checkenroll(course._id)" ng-click="SelectCourse(course.name)">Enroll</button>
+                                        <td style="vertical-align: middle;"><button  type="button" class="btn btn-info active" style="padding-top: 5px; padding-bottom: 5px;" data-toggle="modal" data-target="#myModal" ng-hide="checkenroll(course._id)||istype()" ng-click="SelectCourse(course.name)">Enroll</button>
                                         <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                           <div class="modal-dialog">
                                               <div class="modal-content">
