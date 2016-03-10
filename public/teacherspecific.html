@@ -209,8 +209,9 @@
                           </div>
                           <div class="panel-body-map" id="textbox" style="padding: 20px;height: auto;">
                             <form class="updateteach" >
-                             <TEXTAREA NAME="HARD" COLS="100" ROWS="5" WRAP="HARD" ng-model="course.assignments" >{{course.assignments}}</TEXTAREA>
-                            <button ng-click="updateassignments()">
+                             <TEXTAREA NAME="HARD" COLS="100" ROWS="5" WRAP="HARD" ng-model="assignment.statement" ></TEXTAREA>
+                             <input type="date" name="deadline" min="2016-03-03" style="width: 180px"ng-model="assignment.deadline"><br>
+                            <button ng-click="updateassignments(assignment)">
                               <a href="#">
                                 <!-- <i class="spinner"></i> -->
                                 <span class="state">Update</span></a>
